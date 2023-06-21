@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block body %}
+<main>
+    <section>
+        <h1 class="title">Normal Distribution</h1>
+    </section>
+
+    <section>
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <div>
+                {{ form.mean.label() }}
+                {{ form.mean(type=number) }}
+            </div>
+            <div>
+                {{ form.standard_deviation.label() }}
+                {{ form.standard_deviation(type=number) }}
+            </div>
+            <div>
+                {{ form.z_value.label() }}
+                {{ form.z_value(type=number) }}
+            </div>
+        </fieldset>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </section>
+</main>
+{% endblock body %}

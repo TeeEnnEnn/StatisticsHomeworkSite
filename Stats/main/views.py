@@ -5,4 +5,5 @@ main = Blueprint("main", __name__)
 
 @main.route("/", methods=["GET", "POST"])
 def home():
-    return render_template("home.html")
+    functions = ["normal", "mean", "mode", "median", "variance", "standard deviation", "covariance", "pooled variance", "t-distribution"]
+    return render_template("home.html", functions=functions)

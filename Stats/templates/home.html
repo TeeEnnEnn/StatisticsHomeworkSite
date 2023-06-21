@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <main>
-        This is the main.
-    </main>
+    <h1 class="title">Statistics Main Page</h1>
+
+    <div class="main-grid">
+        
+            {% for func in functions %}
+                <div class="main-grid-block">
+                    <a href="/distributions/normal">{{ func }}</a>
+                </div>
+            {% endfor %}
+    </div>
 {% endblock body %}
