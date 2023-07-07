@@ -2,29 +2,46 @@
 
 {% block body %}
 <main>
-    <section>
-        <h1 class="title">Normal Distribution</h1>
-    </section>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message">
+                {% for message in messages %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
 
-    <section>
-        {{ form.hidden_tag() }}
-        <fieldset>
-            <div>
-                {{ form.mean.label() }}
-                {{ form.mean(type=number) }}
-            </div>
-            <div>
-                {{ form.standard_deviation.label() }}
-                {{ form.standard_deviation(type=number) }}
-            </div>
-            <div>
-                {{ form.z_value.label() }}
-                {{ form.z_value(type=number) }}
-            </div>
-        </fieldset>
+    <form action="{{ url_for('normal.home') }}" method="post">
+        {{ form.csrf_token }}
+
         <div>
-            {{ form.submit() }}
+            {{ form.mean.label }}
+            {{ form.mean(class="form-control") }}
+            {% for error in form.mean.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
         </div>
-    </section>
+        
+        <div>
+            {{ form.standard_deviation.label }}
+            {{ form.standard_deviation(class="form-control") }}
+            {% for error in form.standard_deviation.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.z_value.label }}
+            {{ form.z_value(class="form-control") }}
+            {% for error in form.z_value.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
 </main>
 {% endblock body %}

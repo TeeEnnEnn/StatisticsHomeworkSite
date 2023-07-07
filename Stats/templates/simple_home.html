@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1 class="title">Simple Statistics</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message">
+                {% for message in messages %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+
+    <h2>Current Data Set</h2>
+    
+        {% if data_set %}
+        <div class="data-set-grid">
+            {% for value in data_set %}
+                <p>{{ value }}</p>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p>The data set is empty</p>
+        {% endif %}
+    
+    <h3>Add to data set</h3>
+    <form action="{{ url_for('main.simple_home') }}" method="post">
+        {{ form.csrf_token }}
+
+        <div>
+            {{ form.value.label }}
+            {{ form.value(class="form-control") }}
+            {% for error in form.value.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div>
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <div class="main-grid">
+        
+            {% for func in functions %}
+                <div class="main-grid-block">
+                    <a href="/distributions/normal">{{ func }}</a>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock body %}

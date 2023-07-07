@@ -36,3 +36,9 @@ p, a{
     margin: 1em;
     padding: 1em;
 }
+
+.data-set-grid{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    background-color: rgba(118, 133, 143, 0.5);
+}
