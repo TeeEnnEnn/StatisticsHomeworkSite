@@ -1,22 +1,28 @@
-from flask import Blueprint, render_template, flash, url_for
+from flask import Blueprint, render_template, flash, jsonify
 import numpy as np
 import math as math
+from numpy import ndarray
 
 from Stats.simple.forms import DataSetForm
 
 data_set = np.array([])
+cleared = False
 
 simple = Blueprint("simple", __name__)
 
 
 @simple.route("/simple", methods=["GET", "POST"])
 def home():
-    global data_set  # Add this line to indicate you want to modify the global variable
+    global data_set, cleared  # Add this line to indicate you want to modify the global variable
+
+    if cleared is True:
+        data_set = np.array([])
 
     form = DataSetForm()
     functions = ["mean", "mode", "median", "variance", "standard deviation"]
 
     if form.validate_on_submit():
+        cleared = False
         data_set = np.append(data_set, form.value.data)
         flash("Data Successfully Entered", category="success")
 
@@ -33,10 +39,18 @@ def home():
                            standard_deviation=standard_deviation)
 
 
-def get_mean(values) -> float:
+@simple.route("/reset-data", methods=["POST"])
+def reset_data():
+    global data_set, cleared
+    cleared = True
+    data_set = np.array([])
+    return jsonify({"message": "Data Set reset successfully"}), 200
+
+
+def get_mean(values: ndarray) -> int | ndarray:
     if values.size == 0:
         return 0
-    return round(values.sum() / values.size, 3)
+    return np.mean(values)
 
 
 def get_range(values) -> float:
@@ -45,11 +59,15 @@ def get_range(values) -> float:
     return round(values.max() - values.min(), 3)
 
 
-def get_mode(values) -> float:
+def get_mode(values) -> int | tuple[ndarray, ndarray]:
     if values.size == 0:
         return 0
-    # get one then go through all. have another array to keep the number of appearnaces
-    return 0
+
+    values, counts = np.unique(values, return_counts=True)
+    mode_indices = np.argmax(counts)
+    mode = values[mode_indices]
+
+    return mode
 
 
 def get_median(values) -> float:
@@ -68,16 +86,18 @@ def get_median(values) -> float:
         return median
 
 
-def get_variance(values) -> float:
+def get_variance(values) -> int | ndarray:
     if values.size == 0:
         return 0
-    return 0
+
+    mean = get_mean(values)
+    square_difference = np.square(values - mean)
+    variance = np.mean(square_difference)
+
+    return variance
 
 
 def get_standard_deviation(values) -> float:
     if values.size == 0:
         return 0
     return round(math.sqrt(get_variance(values)), 3)
-
-# def reset_data_set(old_data_set):
-#    return np.array([])
