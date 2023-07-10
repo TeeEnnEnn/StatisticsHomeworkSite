@@ -13,6 +13,8 @@ def create_app():
 def register_blueprints(app):
     from Stats.main.views import main
     from Stats.normal.views import normal
+    from Stats.simple.views import simple
 
     app.register_blueprint(main, url_prefix="/")
     app.register_blueprint(normal, url_prefix="/distributions")
+    app.register_blueprint(simple, url_prefix="/")
