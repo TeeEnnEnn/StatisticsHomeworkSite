@@ -14,70 +14,81 @@
     {% endwith %}
 
 
-    <h2>Current Data Set</h2>
+    <div class="simple-grid">
 
-    {% if data_set.size != 0 %}
-        <div class="data-set-grid">
-            {% for value in data_set %}
-                <p>{{ value }}</p>
-            {% endfor %}
+        <div class="data-entry">
+            <div class="edit-data-set">
+                <h2 class="heading">Edit Data Set</h2>
+
+                <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
+                    {{ form.csrf_token }}
+                    {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
+                    {% for error in form.value.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                    {{ form.submit(class="button") }}
+                </form>
+
+                <div class="reset-data-set">
+                    <p>Reset Data Set</p>
+                    <button class="button" id="reset-button">Reset</button>
+                </div>
+
+            </div>
+
+            <div class="current-data-set">
+                <h2 class="heading">Current Data Set</h2>
+
+                {% if data_set.size != 0 %}
+                    <div class="data-set-grid">
+                        {% for value in data_set %}
+                            <p class="data-value">{{ value }}</p>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>The data set is empty</p>
+                {% endif %}
+            </div>
         </div>
-    {% else %}
-        <p>The data set is empty</p>
-    {% endif %}
 
-    <h3>Add to data set</h3>
-    <form action="{{ url_for('simple.home') }}" method="post" id="">
-        {{ form.csrf_token }}
+        <div class="descriptive-statistics">
+            <h2 class="heading">Descriptive Statistics</h2>
+            <div class="result-grid">
+                <div class="simple-stat">
+                    <p>Mean:</p>
+                    <p>= {{ mean }}</p>
+                </div>
 
-        <div>
-            {{ form.value.label }}
-            {{ form.value(class="form-value", id="form-value") }}
-            {% for error in form.value.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
+                <div class="simple-stat">
+                    <p>Mode</p>
+                    <p>= {{ mode }}</p>
+                </div>
+
+                <div class="simple-stat">
+                    <p>Median</p>
+                    <p>= {{ median }}</p>
+                </div>
+
+                <div class="simple-stat">
+                    <p>Range</p>
+                    <p>= {{ range }}</p>
+                </div>
+
+                <div class="simple-stat">
+                    <p>Variance</p>
+                    <p>= {{ variance }}</p>
+                </div>
+
+                <div class="simple-stat">
+                    <p>Standard deviation</p>
+                    <p>= {{ standard_deviation }}</p>
+                </div>
+            </div>
         </div>
-
-        <div>
-            {{ form.submit(class="button") }}
-        </div>
-    </form>
-
-    <div class="rest-data-set">
-        <h2>Reset Data set</h2>
-        <button class="button" id="reset-button">Reset</button>
     </div>
 
 
-    <div class="main-grid">
-        <div class="simple-stat">
-            <p>Mean:</p>
-            <p>= {{ mean }}</p>
-        </div>
 
-        <div class="simple-stat">
-            <p>Mode</p>
-            <p>= {{ mode }}</p>
-        </div>
 
-        <div class="simple-stat">
-            <p>Median</p>
-            <p>= {{ median }}</p>
-        </div>
 
-        <div class="simple-stat">
-            <p>Range</p>
-            <p>= {{ range }}</p>
-        </div>
-
-        <div class="simple-stat">
-            <p>Variance</p>
-            <p>= {{ variance }}</p>
-        </div>
-
-        <div class="simple-stat">
-            <p>Standard deviation</p>
-            <p>= {{ standard_deviation }}</p>
-        </div>
-    </div>
 {% endblock body %}
