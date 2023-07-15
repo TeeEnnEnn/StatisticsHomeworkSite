@@ -23,6 +23,8 @@
                 <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
                     {{ form.csrf_token }}
                     {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
+                    {{ form.dropdown.label(class="dropdown-label") }}
+                    {{ form.dropdown(class="", id="form-dropdown", title="Accuracy") }}
                     {% for error in form.value.errors %}
                         <span class="error">{{ error }}</span>
                     {% endfor %}
@@ -97,6 +99,11 @@
                 <div class="simple-stat">
                     <p>Upper quartile</p>
                     <p>= {{ upper_quartile }}</p>
+                </div>
+
+                <div class="simple-stat">
+                    <p>Inter-quartile Range</p>
+                    <p>= {{ inter_quartile }}</p>
                 </div>
             </div>
         </div>

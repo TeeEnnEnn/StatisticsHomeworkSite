@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("form-value").value = "";
     }
 
-/*    // To make the alert grid disappear when it is no longer in use
-    const flashMessage = document.querySelector(".flash-message");
 
-    if (flashMessage){
-        setTimeout(function (){
-            flashMessage.classList.add("alert-complete");
-        }, 3000)
-    }*/
+    /*    // To make the alert grid disappear when it is no longer in use
+        const flashMessage = document.querySelector(".flash-message");
+        if (flashMessage){
+            setTimeout(function (){
+                flashMessage.classList.add("alert-complete");
+            }, 3000)
+        }*/
 
 });
