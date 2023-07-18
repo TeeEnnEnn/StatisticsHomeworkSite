@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h1 class="title">Simple Statistics</h1>
+    <script>
+        let dataSetSize = {{ data_set_size | default(0) }};
+    </script>
+
+    <div class="page-header">
+        <p>Simple Statistics</p>
+    </div>
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -33,6 +39,8 @@
 
                 <div class="reset-data-set">
                     <p>Reset Data Set</p>
+                    <div></div>
+                    <div></div>
                     <button class="button" id="reset-button">Reset</button>
                 </div>
 
@@ -40,7 +48,10 @@
 
             <div class="current-data-set">
                 <h2 class="heading">Current Data Set</h2>
-
+                <div class="options-grid">
+                    <a href="{{ url_for('simple.ascending') }}" class="button option">Ascending</a>
+                    <a href="{{ url_for('simple.descending') }}" class="button option">Descending</a>
+                </div>
                 {% if data_set.size != 0 %}
                     <div class="data-set-grid">
                         {% for value in data_set %}
@@ -108,5 +119,18 @@
             </div>
         </div>
     </div>
+
+    <h2 class="heading">Graphs</h2>
+    {% if graph %}
+        <div class="graph-grid">
+            <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph">
+            <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph">
+        </div>
+    {% else %}
+        <div class="graph-grid">
+            <p>Enter at least 3 values to see a graph</p>
+            <p>Enter at least 3 values to see a graph</p>
+        </div>
+    {% endif %}
 
 {% endblock body %}

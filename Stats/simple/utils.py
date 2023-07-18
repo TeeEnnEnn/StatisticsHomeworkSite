@@ -9,12 +9,9 @@ class Calculator:
     def __init__(self, accuracy):
         self.accuracy = accuracy
 
-    def get_mean(self, values: ndarray, accuracy=0) -> float:
+    def get_mean(self, values: ndarray) -> float:
         if values.size == 0:
             return 0
-        if accuracy == 0:
-            mean = float(np.mean(values))
-            return mean
         else:
             mean = float(np.mean(values))
             return round(number=mean, ndigits=self.accuracy)
@@ -22,7 +19,7 @@ class Calculator:
     def get_range(self, values: ndarray) -> float:
         if values.size == 0:
             return 0
-        _range = max(values) - min(values)
+        _range = np.ptp(values)
         return round(number=_range, ndigits=self.accuracy)
 
     def get_mode(self, values: ndarray) -> int | tuple[ndarray, ndarray]:
@@ -96,3 +93,10 @@ class Calculator:
     def get_inter_quartile_range(self, values: ndarray):
         inter_quartile = self.get_upper_quartile(values) - self.get_lower_quartile(values)
         return round(number=inter_quartile, ndigits=self.accuracy)
+
+
+def get_range(values: ndarray):
+    if values.size == 0:
+        return 0
+    _range = max(values) - min(values)
+    return _range

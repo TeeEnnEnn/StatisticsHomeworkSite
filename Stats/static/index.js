@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formValueField.value = "";
     }
 
+
     // When the page is reloaded, check if there is a value stored in the sessionStorage object
     let storedValue = sessionStorage.getItem("formValue");
     if (storedValue) {
@@ -31,6 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("form-value").value = "";
     }
 
+    // To select and focus on the value that is already in the form.
+    window.addEventListener("load", function () {
+        let myFormInput = document.getElementById("form-value");
+        myFormInput.focus();
+        myFormInput.select();
+    });
+
+    let options = document.querySelectorAll(".option");
+    options.forEach(option =>{
+        if (dataSetSize < 3){
+            option.classList.add("hide");
+        }
+    })
 
     /*    // To make the alert grid disappear when it is no longer in use
         const flashMessage = document.querySelector(".flash-message");

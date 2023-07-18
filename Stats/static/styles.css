@@ -25,16 +25,13 @@ p, a, h1, h2, h3, h4, h5 {
 	font-weight: normal;
 }
 
-
-.title {
-	font-size: 4em;
-	font-weight: normal;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	border-radius: var(--border-radius);
-	margin-left: 0.6em;
-	margin-right: 0.6em;
+.page-header{
 	background-color: bisque;
+	padding: 1em;
+	font-size: 1.5em;
+	margin-left: 2em;
+	margin-right: 2em;
+	border-radius: var(--border-radius);
 }
 
 .home-grid {
@@ -64,7 +61,9 @@ p, a, h1, h2, h3, h4, h5 {
 	display: grid;
 	position: relative;
 	grid-template-columns: 1fr 1fr 1fr;
-	padding: 2em;
+	padding-bottom: 2em;
+	padding-right: 2em;
+	padding-left: 2em;
 }
 
 .data-set-grid {
@@ -141,7 +140,9 @@ p, a, h1, h2, h3, h4, h5 {
 	font-weight: normal;
 	border-radius: var(--border-radius);
 	padding: 1em;
-	margin: 1.5em;
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+	margin-top: 1.5em;
 }
 
 
@@ -171,9 +172,8 @@ a:visited, a:link {
 	padding: 1em;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	justify-items: end;
 	align-items: center;
-	align-content: center;
+	justify-items: center;
 }
 
 input#form-value {
@@ -200,18 +200,13 @@ input#submit.button {
 	/* width: 50%; */
 }
 
-button.button {
-	width: 35%;
-}
-
 .reset-data-set {
 	margin: 1.5em;
 	padding: 1em;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	justify-items: end;
-	align-items: center;
-	align-content: center;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	align-items: baseline;
+	justify-items: center;
 }
 
 .reset-data-set > :first-child {
@@ -224,4 +219,64 @@ button.button {
 
 .current-data-set p {
 	font-size: large;
+}
+
+.graph-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-items: center;
+	padding: 1em;
+	background-color: bisque;
+	border-radius: var(--border-radius);
+	margin: 1em 3em;
+}
+
+.options-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin: 1.5em;
+	padding: 1em;
+	justify-items: start;
+}
+
+.error {
+	background-color: bisque;
+	font-weight: bold;
+	color: red;
+	padding: 1em;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow);
+}
+
+.hide {
+	display: none;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 1em;
+	background-color: bisque;
+	border-radius: var(--border-radius);
+	margin: 1em 3em;
+	justify-items: start;
+}
+
+.home-button{
+	margin-right: auto;
+}
+
+.nav-buttons{
+	display: flex;
+	gap: var(--spacing);
+}
+
+.pill{
+	padding: 0.5em;
+	margin: 0.5em;
+	background-color: bisque;
+	font-weight: normal;
+	border-radius: var(--border-radius);
 }
