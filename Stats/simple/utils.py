@@ -93,10 +93,3 @@ class Calculator:
     def get_inter_quartile_range(self, values: ndarray):
         inter_quartile = self.get_upper_quartile(values) - self.get_lower_quartile(values)
         return round(number=inter_quartile, ndigits=self.accuracy)
-
-
-def get_range(values: ndarray):
-    if values.size == 0:
-        return 0
-    _range = max(values) - min(values)
-    return _range

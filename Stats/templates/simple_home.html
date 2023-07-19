@@ -4,133 +4,141 @@
     <script>
         let dataSetSize = {{ data_set_size | default(0) }};
     </script>
-
-    <div class="page-header">
-        <p>Simple Statistics</p>
+    <div class="container">
+        <div class="page-header">
+            <p>Simple Statistics</p>
+        </div>
     </div>
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="flash-message">
-                {% for message in messages %}
-                    <div class="alert alert-info">{{ message }}</div>
-                {% endfor %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {% for message in messages %}
+                        <div class="alert alert-info">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+
+    <div class="container">
+        <div class="simple-grid">
+
+            <div class="data-entry">
+                <div class="edit-data-set">
+                    <h2 class="heading">Edit Data Set</h2>
+
+                    <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
+                        {{ form.csrf_token }}
+                        {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
+                        {{ form.dropdown.label(class="dropdown-label") }}
+                        {{ form.dropdown(class="", id="form-dropdown", title="Accuracy") }}
+                        {% for error in form.value.errors %}
+                            <span class="error">{{ error }}</span>
+                        {% endfor %}
+                        {{ form.submit(class="button") }}
+                    </form>
+
+                    <div class="reset-data-set">
+                        <p>Reset Data Set</p>
+                        <div></div>
+                        <div></div>
+                        <button class="button" id="reset-button">Reset</button>
+                    </div>
+
+                </div>
+
+                <div class="current-data-set">
+                    <h2 class="heading">Current Data Set</h2>
+                    <div class="options-grid">
+                        <a href="{{ url_for('simple.ascending') }}" class="button option">Ascending</a>
+                        <a href="{{ url_for('simple.descending') }}" class="button option">Descending</a>
+                    </div>
+                    {% if data_set.size != 0 %}
+                        <div class="data-set-grid">
+                            {% for value in data_set %}
+                                <p class="data-value">{{ value }}</p>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>The data set is empty</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="descriptive-statistics">
+                <h2 class="heading">Descriptive Statistics</h2>
+                <div class="result-grid">
+                    <div class="simple-stat">
+                        <p>Mean:</p>
+                        <p>= {{ mean }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Mode</p>
+                        <p>= {{ mode }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Median</p>
+                        <p>= {{ median }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Range</p>
+                        <p>= {{ range }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Variance</p>
+                        <p>= {{ variance }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Standard deviation</p>
+                        <p>= {{ standard_deviation }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Mean deviation</p>
+                        <p>= {{ mean_deviation }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Lower Quartile</p>
+                        <p>= {{ lower_quartile }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Upper quartile</p>
+                        <p>= {{ upper_quartile }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Inter-quartile Range</p>
+                        <p>= {{ inter_quartile }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="heading">Graphs</h2>
+        {% if graph %}
+            <div class="graph-grid">
+                <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph">
+                <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph">
+            </div>
+        {% else %}
+            <div class="graph-grid">
+                <p>Enter at least 3 values to see a graph</p>
+                <p>Enter at least 3 values to see a graph</p>
             </div>
         {% endif %}
-    {% endwith %}
-
-
-    <div class="simple-grid">
-
-        <div class="data-entry">
-            <div class="edit-data-set">
-                <h2 class="heading">Edit Data Set</h2>
-
-                <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
-                    {{ form.csrf_token }}
-                    {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
-                    {{ form.dropdown.label(class="dropdown-label") }}
-                    {{ form.dropdown(class="", id="form-dropdown", title="Accuracy") }}
-                    {% for error in form.value.errors %}
-                        <span class="error">{{ error }}</span>
-                    {% endfor %}
-                    {{ form.submit(class="button") }}
-                </form>
-
-                <div class="reset-data-set">
-                    <p>Reset Data Set</p>
-                    <div></div>
-                    <div></div>
-                    <button class="button" id="reset-button">Reset</button>
-                </div>
-
-            </div>
-
-            <div class="current-data-set">
-                <h2 class="heading">Current Data Set</h2>
-                <div class="options-grid">
-                    <a href="{{ url_for('simple.ascending') }}" class="button option">Ascending</a>
-                    <a href="{{ url_for('simple.descending') }}" class="button option">Descending</a>
-                </div>
-                {% if data_set.size != 0 %}
-                    <div class="data-set-grid">
-                        {% for value in data_set %}
-                            <p class="data-value">{{ value }}</p>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <p>The data set is empty</p>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="descriptive-statistics">
-            <h2 class="heading">Descriptive Statistics</h2>
-            <div class="result-grid">
-                <div class="simple-stat">
-                    <p>Mean:</p>
-                    <p>= {{ mean }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Mode</p>
-                    <p>= {{ mode }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Median</p>
-                    <p>= {{ median }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Range</p>
-                    <p>= {{ range }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Variance</p>
-                    <p>= {{ variance }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Standard deviation</p>
-                    <p>= {{ standard_deviation }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Mean deviation</p>
-                    <p>= {{ mean_deviation }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Lower Quartile</p>
-                    <p>= {{ lower_quartile }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Upper quartile</p>
-                    <p>= {{ upper_quartile }}</p>
-                </div>
-
-                <div class="simple-stat">
-                    <p>Inter-quartile Range</p>
-                    <p>= {{ inter_quartile }}</p>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <h2 class="heading">Graphs</h2>
-    {% if graph %}
-        <div class="graph-grid">
-            <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph">
-            <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph">
-        </div>
-    {% else %}
-        <div class="graph-grid">
-            <p>Enter at least 3 values to see a graph</p>
-            <p>Enter at least 3 values to see a graph</p>
-        </div>
-    {% endif %}
 
 {% endblock body %}

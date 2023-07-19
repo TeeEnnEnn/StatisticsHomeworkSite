@@ -1,21 +1,35 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h1 class="title">Statistics Main Page</h1>
+    <div class="container">
+        <h1 class="page-header">Statistics Main Page</h1>
 
 
-    <div class="home-grid">
-        <div class="home-tab">
-            <h2>Simple Statistics</h2>
-            <div class="center-grid">
-                <a href="/simple" class="button">Simple Stats</a>
+        <div class="home-grid">
+            <div class="home-tab">
+                <h2>Simple Statistics</h2>
+                <p>Capabilities</p>
+                <ul>
+                    <li>Calculate Descriptive Statistics (eg. mean, variance, median)</li>
+                    <li>Show Trend graph</li>
+                    <li>Show Frequency Graph</li>
+                </ul>
+                <div class="center-grid">
+                    <a href="/simple" class="button">Simple Stats</a>
+                </div>
             </div>
-        </div>
 
-        <div class="home-tab">
-            <h2>Complex Statistics</h2>
-            <div class="center-grid">
-                <a href="/complex" class="button">Complex Stats</a>
+            <div class="home-tab">
+                <h2>Complex Statistics</h2>
+                <p>Capabilities</p>
+                <ul>
+                    <li>Capability 1</li>
+                    <li>Capability 2</li>
+                    <li>Capability 3</li>
+                </ul>
+                <div class="center-grid">
+                    <a href="/complex" class="button">Complex Stats</a>
+                </div>
             </div>
         </div>
     </div>

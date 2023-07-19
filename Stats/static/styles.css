@@ -29,8 +29,6 @@ p, a, h1, h2, h3, h4, h5 {
 	background-color: bisque;
 	padding: 1em;
 	font-size: 1.5em;
-	margin-left: 2em;
-	margin-right: 2em;
 	border-radius: var(--border-radius);
 }
 
@@ -38,8 +36,7 @@ p, a, h1, h2, h3, h4, h5 {
 	border-radius: var(--border-radius);
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	margin: 1em;
-
+	gap: 1em;
 }
 
 .center-grid {
@@ -50,7 +47,6 @@ p, a, h1, h2, h3, h4, h5 {
 }
 
 .home-tab {
-	margin: 1em;
 	padding: 1em;
 	background-color: bisque;
 	border-radius: var(--border-radius);
@@ -59,18 +55,14 @@ p, a, h1, h2, h3, h4, h5 {
 
 .result-grid {
 	display: grid;
-	position: relative;
 	grid-template-columns: 1fr 1fr 1fr;
-	padding-bottom: 2em;
-	padding-right: 2em;
-	padding-left: 2em;
 }
 
 .data-set-grid {
-	margin: 1.5em;
-	padding: 1em;
+	padding-top: 1em;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
+	gap: 1em;
 }
 
 .flash-message {
@@ -114,13 +106,11 @@ p, a, h1, h2, h3, h4, h5 {
 .simple-grid {
 	display: grid;
 	grid-template-columns: 4fr 6fr;
-	margin: 0 1em 1em;
-
+	gap: 3em;
 }
 
 .data-value {
 	padding: 1em;
-	margin: 0.5em;
 	background-color: bisque;
 	font-weight: normal;
 	border-radius: var(--border-radius);
@@ -140,9 +130,6 @@ p, a, h1, h2, h3, h4, h5 {
 	font-weight: normal;
 	border-radius: var(--border-radius);
 	padding: 1em;
-	margin-left: 1.5em;
-	margin-right: 1.5em;
-	margin-top: 1.5em;
 }
 
 
@@ -168,12 +155,10 @@ a:visited, a:link {
 
 
 .edit-data-set form {
-	margin: 1.5em;
-	padding: 1em;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	align-items: center;
-	justify-items: center;
+	justify-items: end;
 }
 
 input#form-value {
@@ -196,17 +181,12 @@ input#form-value {
 	margin-left: 1em;
 }
 
-input#submit.button {
-	/* width: 50%; */
-}
-
 .reset-data-set {
-	margin: 1.5em;
-	padding: 1em;
+	margin-top: 1.5em;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	align-items: baseline;
-	justify-items: center;
+	justify-items: end;
 }
 
 .reset-data-set > :first-child {
@@ -217,10 +197,6 @@ input#submit.button {
 	font-size: large;
 }
 
-.current-data-set p {
-	font-size: large;
-}
-
 .graph-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -228,14 +204,12 @@ input#submit.button {
 	padding: 1em;
 	background-color: bisque;
 	border-radius: var(--border-radius);
-	margin: 1em 3em;
+	gap: 2em;
 }
 
 .options-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	margin: 1.5em;
-	padding: 1em;
 	justify-items: start;
 }
 
@@ -256,12 +230,10 @@ input#submit.button {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-
 	padding: 1em;
 	background-color: bisque;
-	border-radius: var(--border-radius);
-	margin: 1em 3em;
 	justify-items: start;
+	border-radius: var(--border-radius);
 }
 
 .home-button{
@@ -279,4 +251,9 @@ input#submit.button {
 	background-color: bisque;
 	font-weight: normal;
 	border-radius: var(--border-radius);
+}
+
+.container{
+	margin: 1em;
+	padding: 1em;
 }
