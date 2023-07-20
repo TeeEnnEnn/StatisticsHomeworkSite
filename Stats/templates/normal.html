@@ -1,47 +1,39 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <main>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flash-message">
-                    {% for message in messages %}
-                        <div class="alert alert-info">{{ message }}</div>
+    <div class="container">
+        <div class="page-header">Normal</div>
+    </div>
+
+    <div class="container">
+        <div class="complex-flex">
+            <div class="function-sidebar">
+                {% for function in functions %}
+                    <a href="/complex/{{ function }}" class="function-text-link">{{ function }}</a>
+                {% endfor %}
+            </div>
+            <div class="normal-workspace">
+                <form action="{{ url_for('complex.normal') }}" method="post" class="normal-form">
+                    {{ form.csrf_token }}
+                    {{ form.mean.label(class="") }}
+                    {{ form.mean(class="") }}
+
+                    {{ form.standard_deviation.label(class="") }}
+                    {{ form.standard_deviation(class="") }}
+
+                    {{ form.x.label(class="") }}
+                    {{ form.x(class="") }}
+
+                    {% for error in form.errors %}
+                        <span class="error">{{ error }}</span>
                     {% endfor %}
+
+                    {{ form.submit(class="button") }}
+                </form>
+                <div class="binomial-results">
+                    <p>Probability = {{ probability }}</p>
                 </div>
-            {% endif %}
-        {% endwith %}
-
-        <form action="{{ url_for('normal.home') }}" method="post">
-            {{ form.csrf_token }}
-
-            <div>
-                {{ form.mean.label }}
-                {{ form.mean(class="form-control") }}
-                {% for error in form.mean.errors %}
-                    <span class="error">{{ error }}</span>
-                {% endfor %}
             </div>
-
-            <div>
-                {{ form.standard_deviation.label }}
-                {{ form.standard_deviation(class="form-control") }}
-                {% for error in form.standard_deviation.errors %}
-                    <span class="error">{{ error }}</span>
-                {% endfor %}
-            </div>
-
-            <div>
-                {{ form.z_value.label }}
-                {{ form.z_value(class="form-control") }}
-                {% for error in form.z_value.errors %}
-                    <span class="error">{{ error }}</span>
-                {% endfor %}
-            </div>
-
-            <div>
-                {{ form.submit(class="btn btn-primary") }}
-            </div>
-        </form>
-    </main>
+        </div>
+    </div>
 {% endblock body %}

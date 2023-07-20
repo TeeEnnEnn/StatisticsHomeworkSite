@@ -257,3 +257,49 @@ input#form-value {
 	margin: 1em;
 	padding: 1em;
 }
+
+
+/* For Complex Statistics */
+
+.complex-flex{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.function-grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	gap: 4em;
+}
+
+.function-sidebar{
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+}
+
+.function-text-link{
+	font-size: x-large;
+}
+
+.normal-workspace{
+
+}
+
+.binomial-workspace{
+
+}
+
+.binomial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.normal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}

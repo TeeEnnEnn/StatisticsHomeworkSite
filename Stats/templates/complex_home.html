@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header">Choose a Function</div>
+    </div>
+
+    <div class="container">
+        <div class="complex-flex">
+            <div class="function-sidebar">
+                {% for function in functions %}
+                    <a href="/complex/{{ function }}" class="function-text-link">{{ function }}</a>
+                {% endfor %}
+            </div>
+            <div class="function-grid">
+                {% for function in functions %}
+                    <a href="/complex/{{ function }}" class="button">{{ function }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}

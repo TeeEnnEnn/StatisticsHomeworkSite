@@ -44,7 +44,7 @@ def home():
         generate_line_graph(data_set)
         generate_frequency_graph(data_set)
         graph = True
-    except ValueError as error:
+    except ValueError:
         graph = False
 
     return render_template("simple_home.html", data_set=data_set, form=form,
