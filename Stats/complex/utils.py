@@ -22,6 +22,7 @@ class Distributions:
         mean = float(mean)
         standard_deviation = float(standard_deviation)
         x = float(x)
+
         # probability = (1 / (standard_deviation * m.sqrt(2 * m.pi))) * (
         #        m.e ** (-(1 / 2) * ((x - mean) / standard_deviation) ** 2))
         # return round(probability, self.accuracy)
@@ -29,3 +30,26 @@ class Distributions:
         probability = stats.norm.cdf(x, mean, standard_deviation)
         return round(probability, self.accuracy)
 
+    def t_distribution(self, x, freedom):
+        x = float(x)
+        freedom = float(freedom)
+
+        probability = stats.t.cdf(x, freedom)
+        return round(probability, self.accuracy)
+
+    def f_distribution(self, x, freedom_n, freedom_d):
+        x = float(x)
+        freedom_n = float(freedom_n)
+        freedom_d = float(freedom_d)
+
+        probability = stats.f.cdf(x, freedom_n, freedom_d)
+        probability = 1 - probability
+        return round(probability, self.accuracy)
+
+    def chi_squared_distribution(self, chi_square, freedom):
+        chi_square = float(chi_square)
+        freedom = float(freedom)
+
+        probability = stats.chi2.cdf(chi_square, freedom)
+        probability = 1 - probability
+        return round(probability, self.accuracy)

@@ -2,8 +2,9 @@
 
 {% block body %}
     <div class="container">
-        <div class="page-header">Binomial</div>
+        <div class="page-header">Chi Squared Distribution</div>
     </div>
+
     <div class="container">
         <div class="complex-flex">
             <div class="function-sidebar">
@@ -11,18 +12,14 @@
                     <a href="/complex/{{ function }}" class="function-text-link">{{ function }}</a>
                 {% endfor %}
             </div>
-            <div class="binomial-workspace">
-                <form action="{{ url_for('complex.binomial') }}" method="post" class="binomial-form">
+            <div class="normal-workspace">
+                <form action="{{ url_for('complex.chi_squared') }}" method="post" class="normal-form">
                     {{ form.csrf_token }}
-                    {{ form.n.label(class="") }}
-                    {{ form.n(class="") }}
+                    {{ form.chi_square.label(class="") }}
+                    {{ form.chi_square(class="") }}
 
-                    {{ form.p.label(class="") }}
-                    {{ form.p(class="") }}
-
-                    {{ form.x.label(class="") }}
-                    {{ form.x(class="") }}
-
+                    {{ form.freedom.label(class="") }}
+                    {{ form.freedom(class="") }}
                     {% for error in form.errors %}
                         <span class="error">{{ error }}</span>
                     {% endfor %}
@@ -31,9 +28,6 @@
                 </form>
                 <div class="binomial-results">
                     <p>Probability = {{ probability }}</p>
-                    <p>Mean = {{ mean }}</p>
-                    <p>Variance = {{ variance }}</p>
-                    <p>Standard Deviation = {{ standard_deviation }}</p>
                 </div>
             </div>
         </div>
