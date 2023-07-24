@@ -25,7 +25,7 @@ p, a, h1, h2, h3, h4, h5 {
 	font-weight: normal;
 }
 
-.page-header{
+.page-header {
 	background-color: bisque;
 	padding: 1em;
 	font-size: 1.5em;
@@ -236,16 +236,16 @@ input#form-value {
 	border-radius: var(--border-radius);
 }
 
-.home-button{
+.home-button {
 	margin-right: auto;
 }
 
-.nav-buttons{
+.nav-buttons {
 	display: flex;
 	gap: var(--spacing);
 }
 
-.pill{
+.pill {
 	padding: 0.5em;
 	margin: 0.5em;
 	background-color: bisque;
@@ -253,7 +253,7 @@ input#form-value {
 	border-radius: var(--border-radius);
 }
 
-.container{
+.container {
 	margin: 1em;
 	padding: 1em;
 }
@@ -261,45 +261,61 @@ input#form-value {
 
 /* For Complex Statistics */
 
-.complex-flex{
+.complex-flex {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
 }
 
-.function-grid{
+.function-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	gap: 4em;
 }
 
-.function-sidebar{
+.function-sidebar {
 	display: flex;
 	flex-direction: column;
 	gap: 2em;
 }
 
-.function-text-link{
+.function-text-link {
 	font-size: x-large;
 }
 
-.normal-workspace{
+.distribution-workspace{
 
 }
 
-.binomial-workspace{
-
+.distribution-form{
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
 }
 
-.binomial-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+.form-input {
+	padding: 2em 1em;
+	border-radius: var(--border-radius);
+	border: none;
 }
 
-.normal-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+.form-label {
+	font-size: large;
+}
+
+.distribution-results {
+	border-radius: var(--border-radius);
+	background: var(--background-color);
+	box-shadow: var(--shadow);
+	padding: 0.5em;
+	margin: 2em 0;
+}
+
+.form-pair {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2em;
 }

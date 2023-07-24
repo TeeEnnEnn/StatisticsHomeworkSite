@@ -1,35 +1,29 @@
-{% extends "base.html" %}
+{% extends "distribution_template.html" %}
+{% block workspace %}
+    <div class="distribution-workspace">
+        <form action="{{ url_for('complex.chi_squared') }}" method="post" class="distribution-form">
+            {{ form.csrf_token }}
 
-{% block body %}
-    <div class="container">
-        <div class="page-header">Chi Squared Distribution</div>
-    </div>
-
-    <div class="container">
-        <div class="complex-flex">
-            <div class="function-sidebar">
-                {% for function in functions %}
-                    <a href="/complex/{{ function }}" class="function-text-link">{{ function }}</a>
-                {% endfor %}
-            </div>
-            <div class="normal-workspace">
-                <form action="{{ url_for('complex.chi_squared') }}" method="post" class="normal-form">
-                    {{ form.csrf_token }}
-                    {{ form.chi_square.label(class="") }}
-                    {{ form.chi_square(class="") }}
-
-                    {{ form.freedom.label(class="") }}
-                    {{ form.freedom(class="") }}
-                    {% for error in form.errors %}
+            <div class="form-pair">
+                {{ form.chi_square.label(class="form-label") }}
+                {{ form.chi_square(class="form-input") }}
+                {% for error in form.chi_square.errors %}
                         <span class="error">{{ error }}</span>
                     {% endfor %}
-
-                    {{ form.submit(class="button") }}
-                </form>
-                <div class="binomial-results">
-                    <p>Probability = {{ probability }}</p>
-                </div>
             </div>
+            <div class="form-pair">
+                {{ form.freedom.label(class="form-label") }}
+                {{ form.freedom(class="form-input") }}
+                {% for error in form.freedom.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+            </div>
+
+            {{ form.submit(class="button") }}
+        </form>
+        <div class="distribution-results">
+            <p>Probability = {{ probability }}</p>
         </div>
     </div>
-{% endblock body %}
+
+{% endblock workspace %}

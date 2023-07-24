@@ -25,7 +25,9 @@ def home():
         cleared = False
         data_set = np.append(data_set, form.value.data)
         accuracy = int(form.dropdown.data)
-        flash("Data Successfully Entered", category="success")
+
+        # Uncomment this line of code to show alerts each time a data value is added to the data set
+        # flash("Data Successfully Entered", category="success")
 
     calculator = Calculator(accuracy)
 

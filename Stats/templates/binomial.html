@@ -1,41 +1,39 @@
-{% extends "base.html" %}
+{% extends "distribution_template.html" %}
+{% block workspace %}
+    <div class="distribution-workspace">
+        <form action="{{ url_for('complex.binomial') }}" method="post" class="distribution-form">
+            {{ form.csrf_token }}
 
-{% block body %}
-    <div class="container">
-        <div class="page-header">Binomial</div>
-    </div>
-    <div class="container">
-        <div class="complex-flex">
-            <div class="function-sidebar">
-                {% for function in functions %}
-                    <a href="/complex/{{ function }}" class="function-text-link">{{ function }}</a>
+            <div class="form-pair">
+                {{ form.n.label(class="form-label") }}
+                {{ form.n(class="form-input") }}
+                {% for error in form.n.errors %}
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
             </div>
-            <div class="binomial-workspace">
-                <form action="{{ url_for('complex.binomial') }}" method="post" class="binomial-form">
-                    {{ form.csrf_token }}
-                    {{ form.n.label(class="") }}
-                    {{ form.n(class="") }}
-
-                    {{ form.p.label(class="") }}
-                    {{ form.p(class="") }}
-
-                    {{ form.x.label(class="") }}
-                    {{ form.x(class="") }}
-
-                    {% for error in form.errors %}
-                        <span class="error">{{ error }}</span>
-                    {% endfor %}
-
-                    {{ form.submit(class="button") }}
-                </form>
-                <div class="binomial-results">
-                    <p>Probability = {{ probability }}</p>
-                    <p>Mean = {{ mean }}</p>
-                    <p>Variance = {{ variance }}</p>
-                    <p>Standard Deviation = {{ standard_deviation }}</p>
-                </div>
+            <div class="form-pair">
+                {{ form.p.label(class="form-label") }}
+                {{ form.p(class="form-input") }}
+                {% for error in form.p.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
             </div>
+            <div class="form-pair">
+                {{ form.x.label(class="form-label") }}
+                {{ form.x(class="form-input") }}
+                {% for error in form.x.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="button") }}
+        </form>
+        <div class="distribution-results">
+            <p>Probability = {{ probability }}</p>
+            <p>Mean = {{ mean }}</p>
+            <p>Variance = {{ variance }}</p>
+            <p>Standard Deviation = {{ standard_deviation }}</p>
         </div>
     </div>
-{% endblock body %}
+
+{% endblock workspace %}

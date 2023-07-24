@@ -1,36 +1,32 @@
-{% extends "base.html" %}
+{% extends "distribution_template.html" %}
 
-{% block body %}
-    <div class="container">
-        <div class="page-header">T Distribution</div>
-    </div>
-
-    <div class="container">
-        <div class="complex-flex">
-            <div class="function-sidebar">
-                {% for function in functions %}
-                    <a href="/complex/{{ function }}" class="function-text-link">{{ function }}</a>
-                {% endfor %}
-            </div>
-            <div class="normal-workspace">
-                <form action="{{ url_for('complex.t_distribution') }}" method="post" class="normal-form">
+{% block workspace %}
+            <div class="distribution-workspace">
+                <form action="{{ url_for('complex.t_distribution') }}" method="post" class="distribution-form">
                     {{ form.csrf_token }}
-                    {{ form.x.label(class="") }}
-                    {{ form.x(class="") }}
+                <div class="form-pair">
+                    {{ form.x.label(class="form-label") }}
+                    {{ form.x(class="form-input") }}
 
-                    {{ form.freedom.label(class="") }}
-                    {{ form.freedom(class="") }}
-
-                    {% for error in form.errors %}
+                    {% for error in form.x.errors %}
                         <span class="error">{{ error }}</span>
                     {% endfor %}
+                </div>
+
+                <div class="form-pair">
+                    {{ form.freedom.label(class="form-label") }}
+                    {{ form.freedom(class="form-input") }}
+
+                    {% for error in form.freedom.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
 
                     {{ form.submit(class="button") }}
                 </form>
-                <div class="binomial-results">
+                <div class="distribution-results">
                     <p>Probability = {{ probability }}</p>
                 </div>
             </div>
-        </div>
-    </div>
-{% endblock body %}
+
+{% endblock workspace %}

@@ -14,7 +14,11 @@
             </div>
             <div class="function-grid">
                 {% for function in functions %}
-                    <a href="/complex/{{ function }}" class="button">{{ function }}</a>
+                    {% if not function == "More To Come!" %}
+                        <a href="/complex/{{ function }}" class="button">{{ function }}</a>
+                    {% else %}
+                        <a href="" class="button">{{ function }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

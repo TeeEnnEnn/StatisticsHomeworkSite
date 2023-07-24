@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header">{{ distribution_name }}</div>
+    </div>
+
+    <div class="container">
+        <div class="complex-flex">
+            <div class="function-sidebar">
+                {% for function in functions %}
+                    {% if not function == "More To Come!" %}
+                        <a href="/complex/{{ function }}" class="function-text-link">{{ function }}</a>
+                    {% else %}
+                        <a href="" class="function-text-link">{{ function }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+                {% block workspace %}{% endblock %}
+        </div>
+    </div>
+{% endblock body %}
