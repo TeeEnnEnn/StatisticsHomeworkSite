@@ -38,3 +38,16 @@
     </div>
 
 {% endblock workspace %}
+
+{% block non_workspace %}
+    {% if graph %}
+        <div class="complex-graph-grid">
+            <h2>{{ distribution_name }} Graph</h2>
+            <img src="{{ url_for('complex.normal_graph') }}" alt="A bell shaped curve">
+        </div>
+    {% else %}
+        <div class="complex-graph-grid">
+            <p>Enter Values to see a graph</p>
+        </div>
+    {% endif %}
+{% endblock non_workspace %}

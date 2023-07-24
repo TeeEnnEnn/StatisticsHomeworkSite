@@ -319,3 +319,14 @@ input#form-value {
 	align-items: center;
 	gap: 2em;
 }
+
+.complex-graph-grid{
+	display: grid;
+	background-color: bisque;
+	grid-template-columns: 1fr;
+	align-items: center;
+	justify-items: center;
+	border-radius: var(--border-radius);
+	padding: 1em;
+	gap: 1em;
+}

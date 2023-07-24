@@ -91,5 +91,24 @@ class Calculator:
         return round(number=upper_quartile, ndigits=self.accuracy)
 
     def get_inter_quartile_range(self, values: ndarray):
+        if values.size < 2:
+            return 0
         inter_quartile = self.get_upper_quartile(values) - self.get_lower_quartile(values)
         return round(number=inter_quartile, ndigits=self.accuracy)
+
+    def get_lower_fence(self, values: ndarray):
+        if values.size < 2:
+            return 0
+        lower_quartile = float(statistics.quantiles(values, n=4)[0])
+        inter_quartile = self.get_upper_quartile(values) - self.get_lower_quartile(values)
+        lower_fence = lower_quartile - 1.5 * inter_quartile
+
+        return round(lower_fence, self.accuracy)
+
+    def get_upper_fence(self, values: ndarray):
+        if values.size < 2:
+            return 0
+        upper_quartile = float(statistics.quantiles(values, n=4)[2])
+        inter_quartile = self.get_upper_quartile(values) - self.get_lower_quartile(values)
+        upper_fence = upper_quartile + 1.5 * inter_quartile
+        return round(upper_fence, self.accuracy)

@@ -1,57 +1,56 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('reset-button').addEventListener('click', async function () {
-        fetch('/reset-data', {
-            method: 'POST',
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-                resetForm();
-                // Replace the current history entry with a new one that has the same URL but no form data
-                window.history.replaceState({}, document.title, window.location.href);
-                location.reload();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    });
+    const formValueField = document.getElementById("form-value");
 
+    // Reset the value in the field
     function resetForm() {
-        let formValueField = document.getElementById("form-value");
-        // Store the value in the sessionStorage object with the key "formValue"
         sessionStorage.setItem("formValue", formValueField.value);
         formValueField.value = "";
     }
 
-
-    // When the page is reloaded, check if there is a value stored in the sessionStorage object
-    let storedValue = sessionStorage.getItem("formValue");
-    if (storedValue) {
-        // If there is, clear it and set the form value field to an empty string
-        sessionStorage.clear();
-        document.getElementById("form-value").value = "";
-    }
-
     // To select and focus on the value that is already in the form.
     window.addEventListener("load", function () {
-        let myFormInput = document.getElementById("form-value");
-        myFormInput.focus();
-        myFormInput.select();
+        formValueField.focus();
+        formValueField.select();
     });
 
+    // To hide the Ascending and Descending options on the current data set
     let options = document.querySelectorAll(".option");
-    options.forEach(option =>{
-        if (dataSetSize < 3){
+    options.forEach(option => {
+        if (dataSetSize < 3) {
             option.classList.add("hide");
         }
-    })
+    });
 
-    /*    // To make the alert grid disappear when it is no longer in use
-        const flashMessage = document.querySelector(".flash-message");
-        if (flashMessage){
-            setTimeout(function (){
-                flashMessage.classList.add("alert-complete");
-            }, 3000)
-        }*/
+// Add event listener for double-click on data-value elements
+    const dataGrid = document.querySelector(".data-set-grid");
+    dataGrid.addEventListener("dblclick", async function (event) {
+        const element = event.target;
+        if (element.classList.contains("data-value")) {
+            const index = element.id.split("-")[1];
+            const data = {"index": index};
+
+            // Send a POST request to your Flask app to delete the item from the data_set
+            const response = await fetch('/delete-item', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                // If the deletion was successful, remove the element from the DOM
+                element.remove();
+                console.log(formValueField.value);
+                resetForm();
+                window.history.replaceState({}, document.title, window.location.href);
+                location.reload();
+            } else {
+                // Handle error if needed
+                console.error('Error:', response.statusText);
+            }
+        }
+    });
+
 
 });

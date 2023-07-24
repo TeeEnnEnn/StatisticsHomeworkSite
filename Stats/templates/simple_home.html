@@ -11,19 +11,6 @@
     </div>
 
     <div class="container">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flash-message">
-                    {% for message in messages %}
-                        <div class="alert alert-info">{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-    </div>
-
-
-    <div class="container">
         <div class="simple-grid">
 
             <div class="data-entry">
@@ -32,12 +19,23 @@
 
                     <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
                         {{ form.csrf_token }}
-                        {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
-                        {{ form.dropdown.label(class="dropdown-label") }}
-                        {{ form.dropdown(class="", id="form-dropdown", title="Accuracy") }}
-                        {% for error in form.value.errors %}
-                            <span class="error">{{ error }}</span>
-                        {% endfor %}
+                        <div>
+                            {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
+                            {% for error in form.value.errors %}
+                                <span class="error">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div>
+                            {{ form.dropdown.label(class="dropdown-label") }}
+                        </div>
+
+                        <div>
+                            {{ form.dropdown(class="", id="form-dropdown", title="Accuracy") }}
+                            {% for error in form.dropdown.errors %}
+                                <span class="error">{{ error }}</span>
+                            {% endfor %}
+                        </div>
                         {{ form.submit(class="button") }}
                     </form>
 
@@ -45,7 +43,8 @@
                         <p>Reset Data Set</p>
                         <div></div>
                         <div></div>
-                        <button class="button" id="reset-button">Reset</button>
+                        {#<button class="button" id="reset-button">Reset</button>#}
+                        <a href="{{ url_for('simple.reset_data') }}" class="button">Reset</a>
                     </div>
 
                 </div>
@@ -59,9 +58,10 @@
                     {% if data_set.size != 0 %}
                         <div class="data-set-grid">
                             {% for value in data_set %}
-                                <p class="data-value">{{ value }}</p>
+                                <p class="data-value" id="value-{{ loop.index }}">{{ value }}</p>
                             {% endfor %}
                         </div>
+                        <small>Double click to delete data value</small>
                     {% else %}
                         <p>The data set is empty</p>
                     {% endif %}
@@ -120,6 +120,16 @@
                         <p>Inter-quartile Range</p>
                         <p>= {{ inter_quartile }}</p>
                     </div>
+
+                    <div class="simple-stat">
+                        <p>lower Fence</p>
+                        <p>= {{ lower_fence }}</p>
+                    </div>
+
+                    <div class="simple-stat">
+                        <p>Upper Fence</p>
+                        <p>= {{ upper_fence }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,6 +141,7 @@
             <div class="graph-grid">
                 <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph">
                 <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph">
+                <img src="{{ url_for('simple.boxplot_image') }}" alt="A Boxplot">
             </div>
         {% else %}
             <div class="graph-grid">

@@ -17,6 +17,7 @@ def generate_graph_data(data_set: np.ndarray):
 def generate_line_graph(data_set: ndarray):
     x_values, y_values = generate_graph_data(data_set)
 
+    plt.figure(figsize=(8, 6))
     plt.plot(x_values, y_values, marker="o")
     plt.xlabel("X Axis")
     plt.ylabel("Y Axis")
@@ -29,6 +30,7 @@ def generate_line_graph(data_set: ndarray):
 
 
 def generate_frequency_graph(data_set: ndarray):
+    plt.figure(figsize=(8, 6))
     frequencies, bins, _ = plt.hist(data_set, bins="auto", edgecolor="black", alpha=0.7)
     plt.xlabel('Value')
     plt.ylabel('Frequency')
@@ -36,5 +38,18 @@ def generate_frequency_graph(data_set: ndarray):
     plt.grid(True)
 
     graph_image_path = "C:\\Users\\theon\\Documents\\GitHub\\StatisticsWebsiteClone\\Stats\\static\\frequency_graph.png"
+    plt.savefig(graph_image_path)
+    plt.close()
+
+
+def generate_boxplot(data_set: ndarray):
+    plt.figure(figsize=(8, 6))
+    plt.boxplot(data_set, vert=False)
+
+    plt.xlabel('Values')
+    plt.ylabel('Data Set')
+    plt.title('Box and Whisker Plot')
+
+    graph_image_path = "C:\\Users\\theon\\Documents\\GitHub\\StatisticsWebsiteClone\\Stats\\static\\boxplot.png"
     plt.savefig(graph_image_path)
     plt.close()

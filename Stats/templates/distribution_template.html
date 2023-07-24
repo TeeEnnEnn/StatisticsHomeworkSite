@@ -2,7 +2,9 @@
 
 {% block body %}
     <div class="container">
-        <div class="page-header">{{ distribution_name }}</div>
+        <div class="page-header">
+            <h2>{{ distribution_name }}</h2>
+        </div>
     </div>
 
     <div class="container">
@@ -16,7 +18,10 @@
                     {% endif %}
                 {% endfor %}
             </div>
-                {% block workspace %}{% endblock %}
+            {% block workspace %}{% endblock %}
+        </div>
+        <div class="container">
+            {% block non_workspace %}{% endblock non_workspace %}
         </div>
     </div>
 {% endblock body %}
