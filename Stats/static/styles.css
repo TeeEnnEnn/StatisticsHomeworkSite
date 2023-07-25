@@ -9,6 +9,24 @@
 	text-decoration: none;
 }
 
+ul, ol {
+	list-style: none;
+}
+
+.outer-centre-flex {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 1em 0;
+}
+
+.capability-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+
+}
+
 body {
 	background-color: var(--background-color);
 	font-family: 'Assistant', sans-serif;
@@ -28,7 +46,7 @@ p, a, h1, h2, h3, h4, h5 {
 .page-header {
 	background-color: bisque;
 	padding: 1em;
-	font-size: 1.5em;
+	font-size: 3em;
 	border-radius: var(--border-radius);
 }
 
@@ -270,7 +288,7 @@ input#form-value {
 
 .function-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	gap: 4em;
 }
 
@@ -284,11 +302,11 @@ input#form-value {
 	font-size: x-large;
 }
 
-.distribution-workspace{
+.distribution-workspace {
 
 }
 
-.distribution-form{
+.distribution-form {
 	display: flex;
 	flex-direction: column;
 	gap: 2em;
@@ -310,6 +328,7 @@ input#form-value {
 	box-shadow: var(--shadow);
 	padding: 0.5em;
 	margin: 2em 0;
+	font-size: large;
 }
 
 .form-pair {
@@ -320,7 +339,7 @@ input#form-value {
 	gap: 2em;
 }
 
-.complex-graph-grid{
+.complex-graph-grid {
 	display: grid;
 	background-color: bisque;
 	grid-template-columns: 1fr;
@@ -329,4 +348,59 @@ input#form-value {
 	border-radius: var(--border-radius);
 	padding: 1em;
 	gap: 1em;
+}
+
+.footer {
+	display: grid;
+	gap: 2em;
+	grid-template-columns: 3fr 1fr;
+	padding: 1em 5em;
+	background-color: bisque;
+	border-radius: var(--border-radius);
+	text-align: left;
+}
+
+.footer p a h3 {
+	text-align: left;
+}
+
+.footer-links {
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1em;
+}
+
+.footer-info {
+	font-size: larger;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	justify-content: center;
+	align-items: baseline;
+}
+
+.footer-link {
+	font-size: large;
+}
+
+.footer-right {
+
+}
+
+.footer-right h3 {
+	font-size: large;
+	font-weight: bold;
+}
+
+.inner-button-flex {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+
+.footer-right h3 {
+	text-decoration: underline;
 }
