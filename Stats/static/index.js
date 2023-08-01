@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    const navigationShade = document.getElementById("navigation-shade")
+    const shadeExit = document.getElementById("shade-exit");
+    const shadeButton = document.getElementById("shade-button");
+
+    shadeButton.addEventListener("click", function(){
+       navigationShade.classList.remove("hide");
+    });
+
+    shadeExit.addEventListener("click", function () {
+        navigationShade.classList.add("hide");
+    });
+
     const formValueField = document.getElementById("form-value");
     let darkMode = false;
     let nightButtonHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" fill=\"currentColor\"\n" +
@@ -101,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-
 });
 
 
@@ -111,10 +123,12 @@ function changeTheme(theme) {
         document.documentElement.style.setProperty("--bubble-color", "rgb(68, 70, 86)");
         document.documentElement.style.setProperty("--shadow", "0px 0px 7px rgba(139, 140, 147, 0.75)");
         document.documentElement.style.setProperty("--text-color", "white");
+        document.documentElement.style.setProperty("--background-color-transparent", "rgba(12, 31, 38, 0.85)")
     } else {
         document.documentElement.style.setProperty("--background-color", "rgb(245, 216, 158)");
         document.documentElement.style.setProperty("--bubble-color", "bisque");
         document.documentElement.style.setProperty("--shadow", "0 0 5px rgba(0, 0, 0, 0.75)");
         document.documentElement.style.setProperty("--text-color", "black");
+        document.documentElement.style.setProperty("--background-color-transparent", "rgb(245, 216, 158, 0.85)");
     }
 }

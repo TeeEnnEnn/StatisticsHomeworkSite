@@ -9,7 +9,7 @@
     <title>Statistics Website</title>
 
     {#<link rel="preload" as="style" onload="this.rel='stylesheet'" id="stylesheet" href="../static/styles.css">#}
-    <link  rel="stylesheet" id="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" id="stylesheet" href="../static/styles.css">
 
     {% block script %}
         <script src="{{ url_for('static', filename='index.js') }}"></script>
@@ -18,7 +18,37 @@
 </head>
 
 <body>
+<div class="navigation-shade hide" id="navigation-shade">
+    <div class="container">
+        <div class="shade-exit">
+            <p class="shade-header">Site Navigation</p>
+            <button class="shade-link" id="shade-exit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                     viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="shade-flex container">
+        <a href="{{ url_for('main.home') }}" class="shade-link">Home</a>
+        <a href="{{ url_for('simple.home') }}" class="shade-link">Simple Stats</a>
+        <a href="{{ url_for('complex.home') }}" class="shade-link">Distributions</a>
+    </div>
+</div>
 <div class="container">
+
+    <div class="menu-bar">
+        <h1>Statistics Website Clone</h1>
+        <button id="shade-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+            </svg>
+        </button>
+    </div>
 
     <div class="navbar">
         <a href="{{ url_for('main.home') }}" class="button home-button">Home</a>

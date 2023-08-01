@@ -1,5 +1,6 @@
 :root {
 	--background-color: rgb(245, 216, 158);
+	--background-color-transparent: rgba(245, 216, 158, 0.85);
 	--bubble-color: bisque;
 	--border-radius: 0.5em;
 	--spacing: 1em;
@@ -163,7 +164,7 @@ p, a, h1, h2, h3, h4, h5 {
 
 a:visited, a:link {
 	color: var(--text-color);
-	text-decoration: none;
+	/* text-decoration: none; */
 }
 
 .data-entry {
@@ -384,10 +385,6 @@ input#form-value {
 	font-size: large;
 }
 
-.footer-right {
-
-}
-
 .footer-right h3 {
 	font-size: large;
 	font-weight: bold;
@@ -402,12 +399,12 @@ input#form-value {
 
 /* For night Mode */
 
-.settings{
+.settings {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
 
-#night-mode{
+#night-mode {
 	border: none;
 	background: none;
 	cursor: pointer;
@@ -415,15 +412,124 @@ input#form-value {
 }
 
 #night-mode-prompt {
-    text-align: left;
-    font-size: large;
+	text-align: left;
+	font-size: large;
 }
 
-.night-settings{
+.night-settings {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 2em;
 	justify-content: flex-start;
+}
+
+
+.navigation-shade {
+	z-index: 1;
+	height: 100%;
+	position: fixed;
+	width: 100%;
+	background-color: var(--background-color-transparent);
+}
+
+.shade-flex {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing);
+	align-items: flex-start;
+}
+
+.shade-link {
+	font-size: 1.25em;
+	text-decoration: underline;
+	margin: 1em 0;
+	cursor: pointer;
+}
+
+.shade-header{
+	font-size: 1.5em;
+	margin: 1em 0;
+	cursor: pointer;
+}
+
+.shade-exit {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.shade-exit button {
+	background: none;
+	border: none;
+	color: white;
+}
+
+.menu-bar {
+	display: none;
+}
+
+.menu-bar h1 {
+	font-size: 1em;
+}
+
+.menu-bar button, #shade-exit{
+	box-shadow: var(--shadow);
+	background: none;
+	border: none;
+	color: var(--text-color);
+	border-radius: var(--border-radius);
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 450px) {
+	.container {
+		margin: .75em;
+		padding: 0;
+	}
+
+	.page-header {
+		font-size: 2em;
+	}
+
+	.home-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.footer {
+		grid-template-columns: 1fr;
+		padding: 1em 1em;
+	}
+
+	.footer-right {
+		display: none;
+	}
+
+	.menu-bar {
+		display: flex;
+		background-color: var(--bubble-color);
+		border-radius: var(--border-radius);
+		padding: 1em;
+		justify-content: space-between;
+	}
+
+	.navbar {
+		display: none;
+	}
+
+	.night-settings{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.settings{
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 768px) {
+
 }
 
