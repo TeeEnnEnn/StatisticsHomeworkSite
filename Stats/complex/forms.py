@@ -43,3 +43,15 @@ class FForm(FlaskForm):
     freedom_d = IntegerField("dfd", validators=[DataRequired()],
                              render_kw={'placeholder': 'Denominator Degrees of Freedom'})
     submit = SubmitField("Calculate")
+
+
+class PoissonForm(FlaskForm):
+    k = IntegerField("k", validators=[DataRequired()], render_kw={'placeholder': 'k'})
+    mean = DecimalField("λ", validators=[DataRequired()], render_kw={'placeholder': 'λ'})
+    submit = SubmitField("Calculate")
+
+
+class GeometricForm(FlaskForm):
+    n = IntegerField("n", validators=[DataRequired()], render_kw={'placeholder': 'Number of attempts'})
+    p = DecimalField("p", validators=[DataRequired()], render_kw={'placeholder': 'Probability of success'})
+    submit = SubmitField("Calculate")

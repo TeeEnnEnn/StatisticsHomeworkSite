@@ -1,0 +1,28 @@
+{% extends "distribution_template.html" %}
+{% block workspace %}
+    <div class="distribution-workspace">
+        <form action="{{ url_for('complex.poisson_distribution') }}" method="post" class="distribution-form">
+            {{ form.csrf_token }}
+
+            <div class="form-pair">
+                {{ form.k.label(class="form-label") }}
+                {{ form.k(class="form-input") }}
+                {% for error in form.k.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-pair">
+                {{ form.mean.label(class="form-label") }}
+                {{ form.mean(class="form-input") }}
+                {% for error in form.mean.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            {{ form.submit(class="button") }}
+        </form>
+        <div class="distribution-results">
+            <p>Probability = {{ probability }}</p>
+        </div>
+    </div>
+
+{% endblock workspace %}

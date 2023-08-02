@@ -1,0 +1,33 @@
+{% extends "distribution_template.html" %}
+{% block workspace %}
+    <div class="distribution-workspace">
+        <form action="{{ url_for('complex.geometric_distribution') }}" method="post" class="distribution-form">
+            {{ form.csrf_token }}
+
+            <div class="form-pair">
+                {{ form.n.label(class="form-label") }}
+                {{ form.n(class="form-input") }}
+                {% for error in form.n.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-pair">
+                {{ form.p.label(class="form-label") }}
+                {{ form.p(class="form-input") }}
+                {% for error in form.p.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="button") }}
+        </form>
+        <div class="distribution-results">
+            <p>Probability = {{ probability }}</p>
+            <p>Expected value = {{ expected_value }}</p>
+            <p>Variance = {{ variance }}</p>
+            <p>Standard Deviation = {{ standard_deviation }}</p>
+            <p>Standard Deviation = {{ standard_deviation }}</p>
+        </div>
+    </div>
+
+{% endblock workspace %}

@@ -53,3 +53,16 @@ class Distributions:
         probability = stats.chi2.cdf(chi_square, freedom)
         probability = 1 - probability
         return round(probability, self.accuracy)
+
+    def poisson_distribution(self, k, mean):
+        return round((m.e ** (-mean) * mean ** k) / (m.factorial(k)), self.accuracy)
+
+    def geometric_distribution(self, p, n):
+        probability, expected, variance, standard_deviation = 0, 0, 0, 0
+        if p != 0:
+            probability = round((1 - p) ** (n - 1) * p, self.accuracy)
+            expected = round(1 / p, self.accuracy)
+            variance = round(((1 / p) / (p ** 2)), self.accuracy)
+            standard_deviation = round(m.sqrt(((1 / p) / (p ** 2))), self.accuracy)
+
+        return probability, expected, variance, standard_deviation
