@@ -17,18 +17,16 @@
 
                     <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
                         {{ form.csrf_token }}
-                        <div>
+                        <div class="form-value">
                             {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
                             {% for error in form.value.errors %}
                                 <span class="error">{{ error }}</span>
                             {% endfor %}
                         </div>
 
-                        <div>
+                        <div class="form-value">
                             {{ form.dropdown.label(class="dropdown-label") }}
-                        </div>
 
-                        <div>
                             {{ form.dropdown(class="", id="form-dropdown", title="Accuracy") }}
                             {% for error in form.dropdown.errors %}
                                 <span class="error">{{ error }}</span>
@@ -39,9 +37,9 @@
 
                     <div class="reset-data-set">
                         <p>Reset Data Set</p>
-                        <div></div>
-                        <div></div>
-                        {#<button class="button" id="reset-button">Reset</button>#}
+                        <div class="hidden-small"></div>
+                        <div class="hidden-small"></div>
+
                         <a href="{{ url_for('simple.reset_data') }}" class="button">Reset</a>
                     </div>
 
@@ -137,9 +135,9 @@
         <h2 class="heading">Graphs</h2>
         {% if graph %}
             <div class="graph-grid">
-                <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph">
-                <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph">
-                <img src="{{ url_for('simple.boxplot_image') }}" alt="A Boxplot">
+                <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph" class="graph">
+                <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph" class="graph">
+                <img src="{{ url_for('simple.boxplot_image') }}" alt="A Boxplot" class="graph">
             </div>
         {% else %}
             <div class="graph-grid">

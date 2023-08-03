@@ -8,15 +8,15 @@
                 {{ form.chi_square.label(class="form-label") }}
                 {{ form.chi_square(class="form-input") }}
                 {% for error in form.chi_square.errors %}
-                        <span class="error">{{ error }}</span>
-                    {% endfor %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
             </div>
             <div class="form-pair">
                 {{ form.freedom.label(class="form-label") }}
                 {{ form.freedom(class="form-input") }}
                 {% for error in form.freedom.errors %}
-                        <span class="error">{{ error }}</span>
-                    {% endfor %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
             </div>
 
             {{ form.submit(class="button") }}

@@ -1,2 +1,6 @@
 
 *.pyc
+Stats/static/boxplot.png
+Stats/static/frequency_graph.png
+Stats/static/line_graph.png
+Stats/static/normal-graph.png

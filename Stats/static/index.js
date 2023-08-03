@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const shadeExit = document.getElementById("shade-exit");
     const shadeButton = document.getElementById("shade-button");
 
-    shadeButton.addEventListener("click", function(){
-       navigationShade.classList.remove("hide");
+    shadeButton.addEventListener("click", function () {
+        navigationShade.classList.remove("hide");
     });
 
     shadeExit.addEventListener("click", function () {
