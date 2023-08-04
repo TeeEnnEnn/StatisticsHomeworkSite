@@ -24,8 +24,8 @@ def normal():
     mean, standard_deviation, x = 0, 0, 0
     if form.validate_on_submit():
         mean = float(form.mean.data)
-        standard_deviation = form.standard_deviation.data
-        x = form.x.data
+        standard_deviation = float(form.standard_deviation.data)
+        x = float(form.x.data)
         try:
             create_bell_graph(mean, standard_deviation, x)
             graph = True
@@ -49,9 +49,9 @@ def binomial():
     x, n, p = 0, 0, 0
     form = BinomialForm()
     if form.validate_on_submit():
-        n = form.n.data
-        p = form.p.data
-        x = form.x.data
+        n = int(form.n.data)
+        p = float(form.p.data)
+        x = int(form.x.data)
 
     distribution_name = "Binomial Distribution"
     probability, mean, variance, standard_deviation = calculator.binomial(n=n, p=p, x=x)
@@ -65,8 +65,8 @@ def t_distribution():
     form = TForm()
     freedom, x = 0, 0
     if form.validate_on_submit():
-        freedom = form.freedom.data
-        x = form.x.data
+        freedom = int(form.freedom.data)
+        x = float(form.x.data)
 
     distribution_name = "T Distribution"
     probability = calculator.t_distribution(x=x, freedom=freedom)
@@ -79,8 +79,8 @@ def f_distribution():
     form = FForm()
     freedom_n, freedom_d, x = 0, 0, 0
     if form.validate_on_submit():
-        freedom_n = form.freedom_n.data
-        freedom_d = form.freedom_d.data
+        freedom_n = int(form.freedom_n.data)
+        freedom_d = int(form.freedom_d.data)
         x = form.x.data
 
     distribution_name = "F Distribution"
@@ -94,8 +94,8 @@ def chi_squared():
     form = ChiSquaredForm()
     freedom, chi_square = 0, 0
     if form.validate_on_submit():
-        freedom = form.freedom.data
-        chi_square = form.chi_square.data
+        freedom = int(form.freedom.data)
+        chi_square = float(form.chi_square.data)
 
     distribution_name = "Chi Squared Distribution"
     probability = calculator.chi_squared_distribution(chi_square=chi_square, freedom=freedom)

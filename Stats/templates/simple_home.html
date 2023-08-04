@@ -13,7 +13,7 @@
 
             <div class="data-entry">
                 <div class="edit-data-set">
-                    <h2 class="heading">Edit Data Set</h2>
+                    <h2 class="heading center">Edit Data Set</h2>
 
                     <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
                         {{ form.csrf_token }}
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="current-data-set">
-                    <h2 class="heading">Current Data Set</h2>
+                    <h2 class="heading center">Current Data Set</h2>
                     <div class="options-grid">
                         <a href="{{ url_for('simple.ascending') }}" class="button option">Ascending</a>
                         <a href="{{ url_for('simple.descending') }}" class="button option">Descending</a>
@@ -54,7 +54,7 @@
                     {% if data_set.size != 0 %}
                         <div class="data-set-grid">
                             {% for value in data_set %}
-                                <p class="data-value" id="value-{{ loop.index }}">{{ value }}</p>
+                                <p class="data-value center" id="value-{{ loop.index }}">{{ value }}</p>
                             {% endfor %}
                         </div>
                         <small>Double click to delete data value</small>
@@ -65,66 +65,66 @@
             </div>
 
             <div class="descriptive-statistics">
-                <h2 class="heading">Descriptive Statistics</h2>
+                <h2 class="heading center">Descriptive Statistics</h2>
                 <div class="result-grid">
                     <div class="simple-stat">
-                        <p>Mean:</p>
-                        <p>= {{ mean }}</p>
+                        <p class="center">Mean:</p>
+                        <p class="center">= {{ mean }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Mode</p>
-                        <p>= {{ mode }}</p>
+                        <p class="center">Mode</p>
+                        <p class="center">= {{ mode }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Median</p>
-                        <p>= {{ median }}</p>
+                        <p class="center">Median</p>
+                        <p class="center">= {{ median }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Range</p>
-                        <p>= {{ range }}</p>
+                        <p class="center">Range</p>
+                        <p class="center">= {{ range }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Variance</p>
-                        <p>= {{ variance }}</p>
+                        <p class="center">Variance</p>
+                        <p class="center">= {{ variance }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Standard deviation</p>
-                        <p>= {{ standard_deviation }}</p>
+                        <p class="center">Standard deviation</p>
+                        <p class="center">= {{ standard_deviation }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Mean deviation</p>
-                        <p>= {{ mean_deviation }}</p>
+                        <p class="center">Mean deviation</p>
+                        <p class="center">= {{ mean_deviation }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Lower Quartile</p>
-                        <p>= {{ lower_quartile }}</p>
+                        <p class="center">Lower Quartile</p>
+                        <p class="center">= {{ lower_quartile }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Upper quartile</p>
-                        <p>= {{ upper_quartile }}</p>
+                        <p class="center">Upper quartile</p>
+                        <p class="center">= {{ upper_quartile }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Inter-quartile Range</p>
-                        <p>= {{ inter_quartile }}</p>
+                        <p class="center">Inter-quartile Range</p>
+                        <p class="center">= {{ inter_quartile }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>lower Fence</p>
-                        <p>= {{ lower_fence }}</p>
+                        <p class="center">lower Fence</p>
+                        <p class="center">= {{ lower_fence }}</p>
                     </div>
 
                     <div class="simple-stat">
-                        <p>Upper Fence</p>
-                        <p>= {{ upper_fence }}</p>
+                        <p class="center">Upper Fence</p>
+                        <p class="center">= {{ upper_fence }}</p>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
     </div>
 
     <div class="container">
-        <h2 class="heading">Graphs</h2>
+        <h2 class="heading center">Graphs</h2>
         {% if graph %}
             <div class="graph-grid">
                 <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph" class="graph">

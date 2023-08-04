@@ -3,14 +3,15 @@ from wtforms import SubmitField, DecimalField, IntegerField
 from wtforms.validators import DataRequired, ValidationError
 
 
-class NormalForm(FlaskForm):
-    def validate_mean(form, field):
-        if field.data == 0:
-            return
-        if not field.data and field.raw_data[0] != 0:
-            raise ValidationError("Mean (μ) is a required value")
+def validate_required(form, field):
+    if field.data == 0:
+        return
+    if not field.data and field.raw_data[0] != 0:
+        raise ValidationError(f"{field.label.text} is a required value")
 
-    mean = DecimalField("Mean (μ)", validators=[validate_mean], render_kw={'placeholder': 'Mean'})
+
+class NormalForm(FlaskForm):
+    mean = DecimalField("Mean (μ)", validators=[validate_required], render_kw={'placeholder': 'Mean'})
     standard_deviation = DecimalField("SD (σ)", validators=[DataRequired()],
                                       render_kw={'placeholder': 'Standard Deviation'})
     x = DecimalField("x", validators=[DataRequired()], render_kw={'placeholder': 'x'})

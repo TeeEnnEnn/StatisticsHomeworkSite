@@ -19,6 +19,10 @@
 .hidden-small {
 }
 
+.center{
+	text-align: center;
+}
+
 ul, ol {
 	list-style: none;
 }
@@ -46,7 +50,7 @@ body {
 }
 
 p, a, h1, h2, h3, h4, h5 {
-	text-align: center;
+	/* text-align: center; */
 	font-weight: normal;
 }
 
@@ -55,6 +59,7 @@ p, a, h1, h2, h3, h4, h5 {
 	padding: 1em;
 	font-size: 3em;
 	border-radius: var(--border-radius);
+	text-align: center;
 }
 
 .home-grid {
@@ -131,7 +136,7 @@ p, a, h1, h2, h3, h4, h5 {
 .simple-grid {
 	display: grid;
 	grid-template-columns: 4fr 6fr;
-	gap: 3em;
+	gap: 2em;
 }
 
 .data-value {
@@ -235,7 +240,7 @@ input#form-value {
 
 .options-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
 	justify-items: start;
 }
 
@@ -290,8 +295,8 @@ input#form-value {
 .complex-flex {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
 	align-items: center;
+	justify-content: space-around;
 }
 
 .function-grid {
@@ -491,7 +496,7 @@ input#form-value {
 
 /* Media Queries */
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
 	.container {
 		margin: .75em;
 		padding: 0;
@@ -586,9 +591,83 @@ input#form-value {
 	.result-grid {
 		grid-template-columns: 1fr 1fr;
 	}
+
+	.data-set-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.options-grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 0.25em;
+	}
+
+	.button {
+		padding: 1em;
+	}
+
+	p {
+		margin: 0.25em 0.25em;
+	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px){
+	.simple-grid{
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.result-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.options-grid {
+		gap: var(--spacing);
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.data-set-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.edit-data-set form {
+		grid-template-columns: 1fr;
+		display: grid;
+		justify-items: stretch;
+	}
+
+	.form-value {
+		display: grid;
+		margin-bottom: 1em;
+	}
+
+	.dropdown-label {
+		margin: 0.5em 0;
+	}
+
+	.graph-grid{
+		grid-template-columns: 1fr;
+	}
+
+	.graph{
+		width: 100%;
+	}
+
+	.function-grid{
+		grid-template-columns: 1fr 1fr;
+	}
+	
 
 }
 
+
+@media screen and (max-width: 1750px) {
+	.graph-grid{
+		grid-template-columns: 1fr;
+	}
+
+	.graph{
+
+	}
+}
