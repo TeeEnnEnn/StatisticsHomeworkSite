@@ -2,7 +2,7 @@ import math as m
 from scipy import stats as stats
 
 
-class Distributions:
+class Calculator:
     def __init__(self, accuracy: int):
         self.accuracy = accuracy
 
@@ -47,3 +47,14 @@ class Distributions:
         variance = round(((1 / p) / (p ** 2)), self.accuracy)
         standard_deviation = round(m.sqrt(((1 / p) / (p ** 2))), self.accuracy)
         return probability, expected, variance, standard_deviation
+
+
+class Distribution:
+    name: str
+    description: str
+    explanation: str
+
+    def __init__(self, name, description, explanation):
+        self.name = name
+        self.description = description
+        self.explanation = explanation

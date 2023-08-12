@@ -19,7 +19,7 @@
 .hidden-small {
 }
 
-.center{
+.center {
 	text-align: center;
 }
 
@@ -297,6 +297,7 @@ input#form-value {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
+	margin-bottom: 2em;
 }
 
 .function-grid {
@@ -493,6 +494,37 @@ input#form-value {
 	border-radius: var(--border-radius);
 }
 
+.distribution-explanation {
+	display: flex;
+	font-size: larger;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.explanation {
+
+	padding: 2em;
+	border-radius: var(--border-radius);
+	background-color: var(--bubble-color);
+}
+
+.explanation-header {
+	text-align: center;
+	text-decoration: underline;
+}
+
+.left-flex {
+	display: inline-flex;
+	flex-direction: column;
+	width: 33%;
+}
+
+.right-flex {
+	display: inline-flex;
+	flex-direction: column;
+	width: 66%;
+}
+
 
 /* Media Queries */
 
@@ -610,8 +642,8 @@ input#form-value {
 	}
 }
 
-@media screen and (max-width: 600px){
-	.simple-grid{
+@media screen and (max-width: 600px) {
+	.simple-grid {
 		grid-template-columns: 1fr;
 	}
 }
@@ -646,28 +678,28 @@ input#form-value {
 		margin: 0.5em 0;
 	}
 
-	.graph-grid{
+	.graph-grid {
 		grid-template-columns: 1fr;
 	}
 
-	.graph{
+	.graph {
 		width: 100%;
 	}
 
-	.function-grid{
+	.function-grid {
 		grid-template-columns: 1fr 1fr;
 	}
-	
+
 
 }
 
 
 @media screen and (max-width: 1750px) {
-	.graph-grid{
+	.graph-grid {
 		grid-template-columns: 1fr;
 	}
 
-	.graph{
+	.graph {
 
 	}
 }

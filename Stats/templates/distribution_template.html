@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="page-header">{{ distribution_name }}</h1>
+        <h1 class="page-header">{{ distribution.name }}</h1>
     </div>
 
     <div class="container">
@@ -18,6 +18,24 @@
             </div>
             {% block workspace %}{% endblock %}
         </div>
-        {% block non_workspace %}{% endblock non_workspace %}
+
+
+        <div class="explanation">
+            <h2 class="explanation-header">Get to know the Distribution</h2>
+            <div class="distribution-explanation">
+
+                <div class="left-flex">
+                    <p>{{ distribution.name }}</p>
+                    <p>{{ distribution.description }}</p>
+                </div>
+
+                <div class="right-flex">
+                    <p>{{ distribution.explanation }}</p>
+                </div>
+            </div>
+
+
+        </div>
+
     </div>
 {% endblock body %}

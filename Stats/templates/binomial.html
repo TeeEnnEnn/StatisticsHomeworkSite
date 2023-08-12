@@ -37,3 +37,22 @@
     </div>
 
 {% endblock workspace %}
+
+{% block non_workspace %}
+    <div class="explanation">
+        <h2 class="explanation-header">Get to know the Distribution</h2>
+        <div class="distribution-explanation">
+
+            <div class="left-flex">
+                <p>{{ distribution.name }}</p>
+                <p>{{ distribution.description }}</p>
+            </div>
+
+            <div class="right-flex">
+                <p>{{ distribution.explanation }}</p>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock non_workspace %}
