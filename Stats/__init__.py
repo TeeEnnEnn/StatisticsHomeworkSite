@@ -11,6 +11,11 @@ def create_app():
 
 
 def register_blueprints(app):
+    """
+    Registering the blueprints used by the flask app
+    :param app: The flask app
+    :return: None
+    """
     from Stats.main.views import main
     from Stats.complex.views import complex_
     from Stats.simple.views import simple

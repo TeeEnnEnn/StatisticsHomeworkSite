@@ -8,17 +8,25 @@ complex_ = Blueprint("complex", __name__)
 
 functions = ["normal", "binomial", "f-distribution", "t-distribution", "chi-squared-distribution",
              "poisson-distribution", "geometric-distribution"]
-accuracy = 4
+accuracy = 4  # default accuracy value
 calculator = Calculator(accuracy)
 
 
 @complex_.route("/complex", methods=["GET", "POST"])
 def home():
+    """
+    The main calculator page
+    :return: a template
+    """
     return render_template("complex_home.html", functions=functions)
 
 
 @complex_.route("/complex/normal", methods=["GET", "POST"])
 def normal():
+    """
+    The normal distribution page
+    :return: a template
+    """
     graph = False
     form = NormalForm()
     mean, standard_deviation, x = 0, 0, 0
@@ -45,12 +53,20 @@ def normal():
 
 @complex_.route("/normal-image")
 def normal_graph():
-    graph_image_path = "C:\\Users\\theon\\Documents\\GitHub\\StatisticsWebsiteClone\\Stats\\static\\normal-graph.png"
+    """
+    used to serve an image to the site
+    :return: A graph (.png file)
+    """
+    graph_image_path = "static/normal-graph.png"
     return send_file(graph_image_path, mimetype="image/png")
 
 
 @complex_.route("/complex/binomial", methods=["GET", "POST"])
 def binomial():
+    """
+    The binomial distribution page
+    :return: A template
+    """
     x, n, p = 0, 0, 0
     form = BinomialForm()
     if form.validate_on_submit():
@@ -72,6 +88,10 @@ def binomial():
 
 @complex_.route("/complex/t-distribution", methods=["GET", "POST"])
 def t_distribution():
+    """
+    The T distribution page
+    :return: A template
+    """
     form = TForm()
     freedom, x = 0, 0
     if form.validate_on_submit():
@@ -94,6 +114,10 @@ def t_distribution():
 
 @complex_.route("/complex/f-distribution", methods=["GET", "POST"])
 def f_distribution():
+    """
+    The F distribution page
+    :return: A template
+    """
     form = FForm()
     freedom_n, freedom_d, x = 0, 0, 0
     if form.validate_on_submit():
@@ -112,6 +136,10 @@ def f_distribution():
 
 @complex_.route("/complex/chi-squared-distribution", methods=["GET", "POST"])
 def chi_squared():
+    """
+    The chi-squared distribution page
+    :return: A template
+    """
     form = ChiSquaredForm()
     freedom, chi_square = 0, 0
     if form.validate_on_submit():
@@ -132,6 +160,10 @@ def chi_squared():
 
 @complex_.route("/complex/poisson-distribution", methods=["GET", "POST"])
 def poisson_distribution():
+    """
+    The poisson distribution page
+    :return: A template
+    """
     form = PoissonForm()
     k, mean = 0, 0
     if form.validate_on_submit():
@@ -151,6 +183,10 @@ def poisson_distribution():
 
 @complex_.route("/complex/geometric-distribution", methods=["GET", "POST"])
 def geometric_distribution():
+    """
+    The geometric distribution page
+    :return: A template
+    """
     form = GeometricForm()
     n, p = 0, 0
     if form.validate_on_submit():

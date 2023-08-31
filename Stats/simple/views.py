@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, flash, jsonify, request, send_file, redirect, url_for
+from flask import Blueprint, render_template, jsonify, request, send_file, redirect, url_for
 import numpy as np
+# import flash
 
 from Stats.simple.forms import DataSetForm
 from Stats.simple.graphs import generate_line_graph, generate_frequency_graph, generate_boxplot
@@ -62,20 +63,20 @@ def home():
 
 @simple.route("/line-graph-image")
 def line_graph_image():
-    graph_image_path = "C:\\Users\\theon\\Documents\\GitHub\\StatisticsWebsiteClone\\Stats\\static\\line_graph.png"
+    graph_image_path = "static/line_graph.png"
     return send_file(graph_image_path, mimetype="image/png")
 
 
 @simple.route("/frequency-graph-image")
 def frequency_graph_image():
-    graph_image_path = "C:\\Users\\theon\\Documents\\GitHub\\StatisticsWebsiteClone\\Stats\\static\\frequency_graph.png"
+    graph_image_path = "static/frequency_graph.png"
     return send_file(graph_image_path, mimetype="image/png")
 
 
 @simple.route("/boxplot-image")
 def boxplot_image():
-    graph_image_path = "C:\\Users\\theon\\Documents\\GitHub\\StatisticsWebsiteClone\\Stats\\static\\boxplot.png"
-    return send_file(graph_image_path, mimetype="image/png")
+    path = "static/boxplot.png"
+    return send_file(path, mimetype="image/png")
 
 
 @simple.route("/sort-ascending")

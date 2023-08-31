@@ -6,6 +6,13 @@ image_file_path = "C:\\Users\\theon\\Documents\\GitHub\\StatisticsWebsiteClone\\
 
 
 def create_bell_graph(mean, std, user_x):
+    """
+    Creates a bell shaped graph png file
+    :param mean: The mean value of the distribution
+    :param std: The standard deviation of the distribution
+    :param user_x: The x value entered by the user
+    :return: None (creates a .png file)
+    """
     mean = float(mean)
     std = float(std)
 

@@ -4,6 +4,11 @@ from numpy import ndarray
 
 
 def generate_graph_data(data_set: np.ndarray):
+    """
+    Maps data set values to y values.
+    :param data_set: the data set to be mapped
+    :return: a tuple (x, y) x values =  data set values, y values = mapped values
+    """
     x_values = data_set
     _range = np.ptp(data_set)
 
@@ -15,6 +20,11 @@ def generate_graph_data(data_set: np.ndarray):
 
 
 def generate_line_graph(data_set: ndarray):
+    """
+    generates a line graph from data set values
+    :param data_set: data set used to make graph
+    :return: None
+    """
     x_values, y_values = generate_graph_data(data_set)
 
     plt.figure(figsize=(8, 6))
@@ -30,6 +40,11 @@ def generate_line_graph(data_set: ndarray):
 
 
 def generate_frequency_graph(data_set: ndarray):
+    """
+    generates a frequency graph from data set values
+    :param data_set: data set used to make graph
+    :return: None
+    """
     plt.figure(figsize=(8, 6))
     frequencies, bins, _ = plt.hist(data_set, bins="auto", edgecolor="black", alpha=0.7)
     plt.xlabel('Value')
@@ -43,6 +58,11 @@ def generate_frequency_graph(data_set: ndarray):
 
 
 def generate_boxplot(data_set: ndarray):
+    """
+    generates a boxplot from data set values
+    :param data_set: data set used to make graph
+    :return: None
+    """
     plt.figure(figsize=(8, 6))
     plt.boxplot(data_set, vert=False)
 

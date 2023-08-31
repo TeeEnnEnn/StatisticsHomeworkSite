@@ -4,6 +4,9 @@ from wtforms.validators import DataRequired
 
 
 class DataSetForm(FlaskForm):
+    """
+    A form used when collecting data set values
+    """
     value = DecimalField("New Value", validators=[DataRequired()])
     dropdown = SelectField("Decimals:",
                            choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')],
