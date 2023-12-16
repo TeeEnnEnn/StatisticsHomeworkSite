@@ -142,8 +142,12 @@ p, a, h1, h2, h3, h4, h5 {
 .data-value {
 	padding: 1em;
 	background-color: var(--bubble-color);
-	font-weight: normal;
 	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .simple-stat {
@@ -186,10 +190,10 @@ a:visited, a:link {
 
 
 .edit-data-set form {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	display: flex;
+	justify-content: space-between;
+	gap: 2rem;
 	align-items: center;
-	justify-items: end;
 }
 
 input#form-value {
@@ -524,6 +528,21 @@ input#form-value {
 	flex-direction: column;
 	width: 66%;
 }
+
+
+
+input[type="number"]{
+	padding: 1rem;
+	border-radius: var(--border-radius);
+	border: none;
+}
+
+select{
+	padding: 1rem;
+	border: none;
+	border-radius: var(--border-radius);
+}
+
 
 
 /* Media Queries */

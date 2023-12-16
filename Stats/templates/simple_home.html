@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <script>
-        let dataSetSize = {{ data_set_size | default(0) }};
-    </script>
     <div class="container">
         <h1 class="page-header">Simple Statistics</h1>
     </div>
@@ -15,24 +12,24 @@
                 <div class="edit-data-set">
                     <h2 class="heading center">Edit Data Set</h2>
 
-                    <form action="{{ url_for('simple.home') }}" method="post" id="" class="">
-                        {{ form.csrf_token }}
-                        <div class="form-value">
-                            {{ form.value(class="", id="form-value", placeholder="Enter a value") }}
-                            {% for error in form.value.errors %}
-                                <span class="error">{{ error }}</span>
-                            {% endfor %}
+                    <form action="" method="post" id="simple-submission" class="">
+                        <div class="data-value">
+                            <label for="value">Enter a data value</label>
+                            <input type="number" name="value" id="value" placeholder="eg. 3.27">
+                        </div>
+                        <div class="data-value">
+                            <label for="rounding">Choose no. decimal places</label>
+                            <select name="rounding" id="rounding">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                         </div>
 
-                        <div class="form-value">
-                            {{ form.dropdown.label(class="dropdown-label") }}
-
-                            {{ form.dropdown(class="", id="form-dropdown", title="Accuracy") }}
-                            {% for error in form.dropdown.errors %}
-                                <span class="error">{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                        {{ form.submit(class="button") }}
+                        <input type="submit" class="button" value="submit">
                     </form>
 
                     <div class="reset-data-set">
@@ -48,19 +45,12 @@
                 <div class="current-data-set">
                     <h2 class="heading center">Current Data Set</h2>
                     <div class="options-grid">
-                        <a href="{{ url_for('simple.ascending') }}" class="button option">Ascending</a>
-                        <a href="{{ url_for('simple.descending') }}" class="button option">Descending</a>
+                        <button type="button" class="button option" id="ascending-button">Ascending</button>
+                        <button type="button" class="button option" id="descending-button">Descending</button>
                     </div>
-                    {% if data_set.size != 0 %}
-                        <div class="data-set-grid">
-                            {% for value in data_set %}
-                                <p class="data-value center" id="value-{{ loop.index }}">{{ value }}</p>
-                            {% endfor %}
-                        </div>
-                        <small>Double click to delete data value</small>
-                    {% else %}
-                        <p>The data set is empty</p>
-                    {% endif %}
+                </div>
+
+                <div id="data-grid" class="data-set-grid">
                 </div>
             </div>
 
@@ -131,21 +121,21 @@
         </div>
     </div>
 
-    <div class="container">
-        <h2 class="heading center">Graphs</h2>
-        {% if graph %}
-            <div class="graph-grid">
-                <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph" class="graph">
-                <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph" class="graph">
-                <img src="{{ url_for('simple.boxplot_image') }}" alt="A Boxplot" class="graph">
-            </div>
-        {% else %}
-            <div class="graph-grid">
-                <p>Enter at least 3 values to see a graph</p>
-                <p>Enter at least 3 values to see a graph</p>
-            </div>
-        {% endif %}
-    </div>
+    {#<div class="container">#}
+    {#    <h2 class="heading center">Graphs</h2>#}
+    {#    {% if graph %}#}
+    {#    <div class="graph-grid">#}
+    {#        <img src="{{ url_for('simple.line_graph_image') }}" alt="A Line graph" class="graph">#}
+    {#        <img src="{{ url_for('simple.frequency_graph_image') }}" alt="A Frequency graph" class="graph">#}
+    {#        <img src="{{ url_for('simple.boxplot_image') }}" alt="A Boxplot" class="graph">#}
+    {#    </div>#}
+    {#    {% else %}#}
+    {#    <div class="graph-grid">#}
+    {#        <p>Enter at least 3 values to see a graph</p>#}
+    {#        <p>Enter at least 3 values to see a graph</p>#}
+    {#    </div>#}
+    {#    {% endif %}#}
+    {#</div>#}
 
 
 {% endblock body %}

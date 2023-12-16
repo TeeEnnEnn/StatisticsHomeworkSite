@@ -15,7 +15,7 @@ simple = Blueprint("simple", __name__)
 @simple.route("/simple", methods=["GET", "POST"])
 def home():
     global data_set, cleared  # Add this line to indicate you want to modify the global variable
-
+    
     if cleared is True:
         data_set = np.array([])
 
