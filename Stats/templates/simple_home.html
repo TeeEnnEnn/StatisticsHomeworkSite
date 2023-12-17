@@ -14,11 +14,11 @@
 
                     <form action="" method="post" id="simple-submission" class="">
                         <div class="data-value">
-                            <label for="value">Enter a data value</label>
+                            <label for="value" class="center">Enter a data value</label>
                             <input type="number" name="value" id="value" placeholder="eg. 3.27">
                         </div>
                         <div class="data-value">
-                            <label for="rounding">Choose no. decimal places</label>
+                            <label for="rounding">Decimal places</label>
                             <select name="rounding" id="rounding">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -37,7 +37,7 @@
                         <div class="hidden-small"></div>
                         <div class="hidden-small"></div>
 
-                        <a href="{{ url_for('simple.reset_data') }}" class="button">Reset</a>
+                        <button type="button" id="reset-data" class="button">Reset</button>
                     </div>
 
                 </div>
@@ -58,63 +58,63 @@
                 <h2 class="heading center">Descriptive Statistics</h2>
                 <div class="result-grid">
                     <div class="simple-stat">
-                        <p class="center">Mean:</p>
-                        <p class="center">= {{ mean }}</p>
+                        <p class="center">Mean</p>
+                        <p class="center" id="mean"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Mode</p>
-                        <p class="center">= {{ mode }}</p>
+                        <p class="center" id="mode"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Median</p>
-                        <p class="center">= {{ median }}</p>
+                        <p class="center" id="median"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Range</p>
-                        <p class="center">= {{ range }}</p>
+                        <p class="center" id="range"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Variance</p>
-                        <p class="center">= {{ variance }}</p>
+                        <p class="center" id="variance"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Standard deviation</p>
-                        <p class="center">= {{ standard_deviation }}</p>
+                        <p class="center" id="std-deviation"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Mean deviation</p>
-                        <p class="center">= {{ mean_deviation }}</p>
+                        <p class="center" id="mean-deviation"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Lower Quartile</p>
-                        <p class="center">= {{ lower_quartile }}</p>
+                        <p class="center" id="lower-quartile"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Upper quartile</p>
-                        <p class="center">= {{ upper_quartile }}</p>
+                        <p class="center" id="upper-quartile"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Inter-quartile Range</p>
-                        <p class="center">= {{ inter_quartile }}</p>
+                        <p class="center" id="iqr"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">lower Fence</p>
-                        <p class="center">= {{ lower_fence }}</p>
+                        <p class="center" id="lower-fence"></p>
                     </div>
 
                     <div class="simple-stat">
                         <p class="center">Upper Fence</p>
-                        <p class="center">= {{ upper_fence }}</p>
+                        <p class="center" id="upper-fence"></p>
                     </div>
                 </div>
             </div>

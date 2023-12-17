@@ -9,7 +9,7 @@ class Calculator:
     The Calculator class performs calculations onm teh values within the dataset
     """
 
-    def __init__(self, accuracy):
+    def __init__(self, accuracy=5):
         """
         Initialization of the Calculator class
         :param accuracy:the rounding accuracy to be used for calculations.
@@ -74,7 +74,7 @@ class Calculator:
             median = values[int(position) - 1]
             return round(number=median, ndigits=self.accuracy)
 
-    def get_variance(self, values: ndarray) -> int | ndarray:
+    def get_variance(self, values: ndarray) -> float | ndarray:
         """
         Returns the variance
         :param values: the values in the data set
@@ -144,7 +144,7 @@ class Calculator:
 
     def get_inter_quartile_range(self, values: ndarray):
         """
-        Returns interquartile range
+        Returns inter-quartile range
         :param values: the values in the data set
         :return: Inter Quartile Range
         """

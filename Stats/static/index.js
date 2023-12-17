@@ -77,10 +77,10 @@ function changeTheme(theme) {
         document.documentElement.style.setProperty("--text-color", "white");
         document.documentElement.style.setProperty("--background-color-transparent", "rgba(12, 31, 38, 0.85)")
     } else {  // Light theme colors
-        document.documentElement.style.setProperty("--background-color", "rgb(245, 216, 158)");
-        document.documentElement.style.setProperty("--bubble-color", "bisque");
-        document.documentElement.style.setProperty("--shadow", "0 0 5px rgba(0, 0, 0, 0.75)");
+        document.documentElement.style.setProperty("--background-color", "rgb(251, 251, 251)");
+        document.documentElement.style.setProperty("--bubble-color", "#a9d5ff");
+        document.documentElement.style.setProperty("--shadow", "0 0 10px 2px rgb(25 0 255 / 75%)");
         document.documentElement.style.setProperty("--text-color", "black");
-        document.documentElement.style.setProperty("--background-color-transparent", "rgb(245, 216, 158, 0.85)");
+        document.documentElement.style.setProperty("--background-color-transparent", "rgb(251, 251, 251, 0.85)");
     }
 }
