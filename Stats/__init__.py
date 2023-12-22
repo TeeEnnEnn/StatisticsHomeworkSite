@@ -3,7 +3,8 @@ from flask import Flask
 
 def create_app():
     app: Flask = Flask(__name__)
-    app.config["SECRET_KEY"] = "Stats"
+    app.config["SECRET_KEY"] = "328b8608-cbeb-4ec7-af30-067fda3aba95"
+    app.config["SESSION_COOKIE_DURATION"] = None
 
     register_blueprints(app)
 

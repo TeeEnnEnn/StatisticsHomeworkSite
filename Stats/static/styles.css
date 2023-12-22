@@ -1,9 +1,9 @@
 :root {
-    --background-color: rgb(251 251 251);
-    --bubble-color: #a9d5ff;
-    --shadow: 0 0 10px 2px rgb(25 0 255 / 75%);
+    --background-color: rgb(231, 231, 231);
+    --bubble-color: #c5cccc;
+    --shadow: 0 0 10px 2px rgba(94, 94, 94, 0.75);
     --text-color: black;
-    --background-color-transparent: rgb(255, 241, 225, 0.85);
+    --background-color-transparent: rgba(215, 215, 215, 0.85);
     --border-radius: 0.5em;
     --spacing: 1em;
 }
@@ -59,7 +59,7 @@ p, a, h1, h2, h3, h4, h5 {
     background-color: var(--bubble-color);
     padding: 1em;
     font-size: 3em;
-    border-radius: var(--border-radius);
+    border-radius: calc(var(--border-radius) - 0.25em);
     text-align: center;
 }
 
@@ -308,7 +308,7 @@ input#form-value {
 
 .function-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 4em;
 }
 

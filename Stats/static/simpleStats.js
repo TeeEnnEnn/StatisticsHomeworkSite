@@ -1,7 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let dataset = [];
+    let dataset = JSON.parse(localStorage.getItem("dataset")) ?? [];
     let dataGrid = document.getElementById("data-grid");
     let rounding;
+
+    if (dataset) {
+        if (dataset.length !== 0) {
+            dataGrid.innerHTML = "";
+            dataGrid.style.display = "grid";
+            dataset.forEach((value, index) => {
+                const pElement = document.createElement("p");
+                pElement.className = "data-value center";
+                pElement.id = `value-${index}`;
+                pElement.textContent = value;
+                pElement.addEventListener("dblclick", function () {
+                    dataGrid.removeChild(pElement);
+                    let myIndex = dataset.indexOf(pElement.textContent);
+                    dataset.splice(myIndex, 1);
+                    updateUI();
+                });
+                dataGrid.appendChild(pElement);
+            });
+        } else {
+            dataGrid.innerHTML = "";
+            dataGrid.style.display = "block";
+            let emptyP = document.createElement("p");
+            emptyP.textContent = "The data set is empty";
+            dataGrid.appendChild(emptyP);
+        }
+    }
+
 
     async function updateUI() {
         if (dataset.length !== 0) {
@@ -21,20 +48,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataGrid.appendChild(pElement);
             });
             await sendForCalculation(dataset);
+            localStorage.setItem("dataset", JSON.stringify(dataset))
         } else {
             dataGrid.innerHTML = "";
             dataGrid.style.display = "block";
             let emptyP = document.createElement("p");
             emptyP.textContent = "The data set is empty";
             dataGrid.appendChild(emptyP);
+            await sendForCalculation(dataset);
         }
     }
 
     function sendForCalculation(dataset) {
         fetch("/simple/calculate", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({dataset: dataset})
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ dataset: dataset })
         }).then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error. Status: ${response.status}`);
@@ -45,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.message === "error") throw new Error(`Internal Server Error. Error: ${data.error}`);
                 updateResults(data.result);
             }).catch((error) => {
-            console.error(error);
-        })
+                console.error(error);
+            })
     }
 
     function updateResults(results) {
@@ -70,13 +99,19 @@ document.addEventListener("DOMContentLoaded", function () {
         let formData = new FormData(simpleForm)
         rounding = formData.get("rounding");
         let value = formData.get("value");
-        dataset.push(value);
+        dataset.push(Number(value));
         await updateUI();
     });
 
     let ascending = document.getElementById("ascending-button");
     let descending = document.getElementById("descending-button");
     let reset = document.getElementById("reset-data");
+    let roundingDropdown = document.getElementById("rounding");
+
+    roundingDropdown.addEventListener("change", async function () {
+        rounding = roundingDropdown.options[roundingDropdown.selectedIndex].text;
+        await updateUI();
+    });
 
     ascending.addEventListener("click", async function () {
         dataset.sort((a, b) => a - b);
@@ -90,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     reset.addEventListener("click", async function () {
         dataset = [];
+        localStorage.setItem("dataset", JSON.stringify(dataset));
         await updateUI();
     });
 
