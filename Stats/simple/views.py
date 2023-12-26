@@ -5,11 +5,9 @@ import pendulum
 # moved datetime -> pendulum; because "TypeError: can't subtract offset-naive and offset-aware datetimes" inexplicably
 
 from Stats.simple.utils import Calculator
+from Stats import active_tokens
 
 simple = Blueprint("simple", __name__)
-
-# using a set because sets do not allow duplicates
-active_tokens = set()
 
 
 @simple.before_request
@@ -20,17 +18,21 @@ def before_request():
 		active_tokens.add(session["user_token"])
 
 	if pendulum.now() - session["last_activity"] >= pendulum.duration(seconds=7200):
-		active_tokens.remove(session["user_token"])
-		delete_graphs(session["user_token"])
-		session.pop("user_token")
-		session.pop("last_activity")
-		flash("""
-		Your session has ended.
-		Your graphs have been deleted.
-		Reload a page to get a new session
-		""", "warning")
+		if session["user_token"] in active_tokens:
+			active_tokens.remove(session["user_token"])
+			delete_graphs(session["user_token"])
+			session.pop("user_token")
+			session.pop("last_activity")
+			flash("""
+			Your session has ended.
+			Your graphs have been deleted.
+			Reload a page to get a new session
+			""", "warning")
 
 	session["last_activity"] = pendulum.now()
+
+	print(session)
+	print(len(active_tokens))
 
 
 def delete_graphs(user_token: str):

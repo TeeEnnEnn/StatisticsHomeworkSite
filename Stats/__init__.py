@@ -1,5 +1,9 @@
 from flask import Flask
 
+# using a set because sets do not allow duplicates
+active_tokens = set()
+# might change this to a list because the set is being weird
+
 
 def create_app():
     app: Flask = Flask(__name__)

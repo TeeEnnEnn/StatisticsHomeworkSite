@@ -2,35 +2,24 @@
 
 {% block workspace %}
     <div class="distribution-workspace">
-        <form action="{{ url_for('complex.normal') }}" method="post" class="distribution-form">
-            {{ form.csrf_token }}
+        <form action="" method="post" class="distribution-form" id="normal-distribution">
             <div class="form-pair">
-                {{ form.mean.label(class="form-label") }}
-                {{ form.mean(class="form-input") }}
-                {% for error in form.mean.errors %}
-                    <span class="error">{{ error }}</span>
-                {% endfor %}
+                <label for="mean">Mean</label>
+                <input type="number" id="mean" step="0.001" placeholder="0">
             </div>
 
             <div class="form-pair">
-                {{ form.standard_deviation.label(class="form-label") }}
-                {{ form.standard_deviation(class="form-input") }}
-                {% for error in form.standard_deviation.errors %}
-                    <span class="error">{{ error }}</span>
-                {% endfor %}
+                <label for="sd">Standard Deviation</label>
+                <input type="number" step="0.001" placeholder="1" id="sd">
             </div>
 
             <div class="form-pair">
-                {{ form.x.label(class="form-label") }}
-                {{ form.x(class="form-input") }}
-
-                {% for error in form.x.errors %}
-                    <span class="error">{{ error }}</span>
-                {% endfor %}
+                <label for="x">x</label>
+                <input type="number" step="0.001" placeholder="1.96" id="x">
             </div>
 
 
-            {{ form.submit(class="button") }}
+            <input type="submit" value="Calculate" class="button">
         </form>
         <div class="distribution-results">
             <p class="center">Probability = {{ probability }}</p>
@@ -51,3 +40,11 @@
         </div>
     {% endif %}
 {% endblock non_workspace %}
+
+{#{% block script %}#}
+{#    <script>#}
+{#        document.addEventListener("DOMContentLoaded", function (){#}
+{#           console.log("this works")#}
+{#        });#}
+{#    </script>#}
+{#{% endblock script %}#}
