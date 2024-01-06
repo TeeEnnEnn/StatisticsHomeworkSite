@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, send_file
+from flask import Blueprint, render_template, send_file, request, jsonify
 
 from Stats.complex.graphs import create_bell_graph
 from Stats.complex.utils import Calculator, Distribution
@@ -20,7 +20,7 @@ def home():
 	return render_template("complex_home.html", functions=functions)
 
 
-@complex_.route("/complex/normal", methods=["GET", "POST"])
+@complex_.get("/complex/normal")
 def normal():
 	"""
 	The normal distribution page
@@ -36,6 +36,24 @@ def normal():
 	# probability = calculator.normal(mean, standard_deviation, x)
 	return render_template("normal.html",
 	                       distribution=distribution, functions=functions)
+
+
+@complex_.post("/complex/normal")
+def normal_calculation():
+	try:
+		data = request.json
+		mean = data.get("mean", 0)
+		sd = data.get("sd", 0)
+		x = data.get("x", 0)
+
+	except Exception as error:
+		return jsonify(error=str(error), message="error")
+
+	try:
+		result = float(calculator.normal(mean, sd, x))
+		return jsonify(probability=result, message="success")
+	except Exception as error:
+		return jsonify(error=str(error), message="error")
 
 
 @complex_.route("/normal-image")

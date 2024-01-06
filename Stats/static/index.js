@@ -77,7 +77,7 @@ function changeTheme(theme) {
         document.documentElement.style.setProperty("--text-color", "white");
         document.documentElement.style.setProperty("--background-color-transparent", "rgba(12, 31, 38, 0.85)")
     } else {  // Light theme colors
-        document.documentElement.style.setProperty("--background-color", "rgb(231, 231, 231)");
+        document.documentElement.style.setProperty("--background-color", "rgb(190,190,190)");
         document.documentElement.style.setProperty("--bubble-color", "#c5cccc");
         document.documentElement.style.setProperty("--shadow", "0 0 10px 2px rgba(94, 94, 94, 0.75)");
         document.documentElement.style.setProperty("--text-color", "black");

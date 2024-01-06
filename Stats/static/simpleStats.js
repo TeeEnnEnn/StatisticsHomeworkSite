@@ -4,33 +4,16 @@ if (window.location.href.includes("simple")) {
         let dataGrid = document.getElementById("data-grid");
         let rounding;
 
-        // if there are values in the local storage data set
-        // if (dataset) {
-        //     if (dataset.length !== 0) {
-        //         dataGrid.innerHTML = "";
-        //         dataGrid.style.display = "grid";
-        //         dataset.forEach((value, index) => {
-        //             const pElement = document.createElement("p");
-        //             pElement.className = "data-value center";
-        //             pElement.id = `value-${index}`;
-        //             pElement.textContent = value;
-        //             pElement.addEventListener("dblclick", function () {
-        //                 dataGrid.removeChild(pElement);
-        //                 let myIndex = dataset.indexOf(pElement.textContent);
-        //                 dataset.splice(myIndex, 1);
-        //                 updateUI();
-        //             });
-        //             dataGrid.appendChild(pElement);
-        //         });
-        //     } else {
-        //         dataGrid.innerHTML = "";
-        //         dataGrid.style.display = "block";
-        //         let emptyP = document.createElement("p");
-        //         emptyP.textContent = "The data set is empty";
-        //         dataGrid.appendChild(emptyP);
-        //     }
-        // }
-
+        async function checkDataSet() {
+            if (dataset) {
+                let loadDataset = confirm("Previous Dataset found\nWould you want to load your previous dataset?");
+                if (loadDataset) {
+                    await updateUI();
+                } else {
+                    dataset = [];
+                }
+            }
+        }
 
         async function updateUI() {
             if (dataset.length !== 0) {
@@ -133,6 +116,8 @@ if (window.location.href.includes("simple")) {
             localStorage.setItem("dataset", JSON.stringify(dataset));
             await updateUI();
         });
+
+        checkDataSet();
 
     });
 

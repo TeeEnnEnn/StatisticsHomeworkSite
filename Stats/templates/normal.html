@@ -5,24 +5,24 @@
         <form action="" method="post" class="distribution-form" id="normal-distribution">
             <div class="form-pair">
                 <label for="mean">Mean</label>
-                <input type="number" id="mean" step="0.001" placeholder="0">
+                <input type="number" id="mean" step="0.001" placeholder="0" name="mean">
             </div>
 
             <div class="form-pair">
                 <label for="sd">Standard Deviation</label>
-                <input type="number" step="0.001" placeholder="1" id="sd">
+                <input type="number" step="0.001" placeholder="1" id="sd" name="sd">
             </div>
 
             <div class="form-pair">
                 <label for="x">x</label>
-                <input type="number" step="0.001" placeholder="1.96" id="x">
+                <input type="number" step="0.001" placeholder="1.96" id="x" name="x">
             </div>
 
 
             <input type="submit" value="Calculate" class="button">
         </form>
         <div class="distribution-results">
-            <p class="center">Probability = {{ probability }}</p>
+            <p class="center" id="probability">Probability = </p>
         </div>
     </div>
 

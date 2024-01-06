@@ -31,9 +31,6 @@ def before_request():
 
 	session["last_activity"] = pendulum.now()
 
-	print(session)
-	print(len(active_tokens))
-
 
 def delete_graphs(user_token: str):
 	pass
