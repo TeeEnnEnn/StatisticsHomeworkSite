@@ -50,6 +50,7 @@ def home():
 
 @simple.post("/simple/calculate")
 def calculate():
+	# TODO: investigate why values are rounded
 	try:
 		data = request.json
 		values = data.get("dataset", [])
@@ -65,6 +66,7 @@ def calculate():
 	try:
 		calculator = Calculator()
 		result = {
+			# TODO: verify that these calculations are correct?
 			"mean": float(calculator.get_mean(data_set)),
 			"range": float(calculator.get_range(data_set)),
 			"mode": float(calculator.get_mode(data_set)),

@@ -47,12 +47,11 @@ class Calculator:
         """
         if values.size == 0:
             return 0
-
+        # TODO: Check why the values are rounded
         values, counts = np.unique(values, return_counts=True)
         mode_indices = np.argmax(counts)
         mode = values[mode_indices]
-
-        return round(number=mode, ndigits=self.accuracy)
+        return mode
 
     def get_median(self, values: ndarray) -> float:
         """

@@ -2,6 +2,7 @@ if (window.location.href.includes("simple")) {
     document.addEventListener("DOMContentLoaded", function () {
         let dataset = JSON.parse(localStorage.getItem("dataset")) ?? [];
         let dataGrid = document.getElementById("data-grid");
+        let valueInput = document.getElementById("value");
         let rounding;
 
         async function checkDataSet() {
@@ -34,6 +35,7 @@ if (window.location.href.includes("simple")) {
                 });
                 await sendForCalculation(dataset);
                 localStorage.setItem("dataset", JSON.stringify(dataset))
+                valueInput.focus();
             } else {
                 dataGrid.innerHTML = "";
                 dataGrid.style.display = "block";
@@ -41,6 +43,7 @@ if (window.location.href.includes("simple")) {
                 emptyP.textContent = "The data set is empty";
                 dataGrid.appendChild(emptyP);
                 await sendForCalculation(dataset);
+                valueInput.focus();
             }
         }
 
@@ -125,4 +128,5 @@ if (window.location.href.includes("simple")) {
         let multiple = Math.pow(10, digits);
         return Math.round(number * multiple) / multiple;
     }
+    valueInput.focus();
 }
